@@ -1,0 +1,70 @@
+package elvira.michael;
+
+import trees.BookTree;
+import trees.IDNode;
+import trees.IDTree;
+import trees.RBTree;
+
+/**
+ * LibraryDB.java
+ * Purpose: The general implementation of the main database.
+ */
+
+public class LibraryDB {
+	private RBTree<IDNode> _idTree;
+	private RBTree<<BookNode> _books;
+	private MaxArray _idArray;//TODO remove?!
+	
+	public LibraryDB(){
+		_idArray = new MaxArray();
+		_idTree = new IDTree(_idArray, this);
+		_books = new BookTree(this);
+		
+	}
+	
+	public void printBooks(String ID) {
+		IDNode person = _idTree.search(ID);
+		System.out.println("ID " + ID + " has loaned the following books:\n" + person.printBooks());
+		
+		
+	}
+	
+	public void printMaxBooks(){
+		_idArray.printMaxIDs();
+	}
+
+	public void hasBook(String bookCode) {
+		System.out.println("This book ("+bookCode+") is loaned to: "+ _books.getPerson(bookCode));
+		
+	}
+
+	public void IDAction(String id, boolean add, String name) {
+		
+		if(add){
+			_idTree.add(_idTree, id, name);//TODO new version (2.0)
+		}
+		else
+			_idTree.remove(id);
+
+	}
+
+	public void bookAction(String book, boolean add, String id) {
+		if(add){
+			IDNode person = _idTree.search(id); //assuming input is correct (there is such an id)
+			_books.add(book, person);
+			//person.loanBook(book); //TODO in _books.add
+		}
+		else{
+			_books.remove(book);
+		}
+	}
+	
+	public MaxArray getMaxArr(){
+		return _idArray;
+	}
+	
+	//TODO for testing only
+	public void printID(){
+		_idTree.toString();
+	}
+}

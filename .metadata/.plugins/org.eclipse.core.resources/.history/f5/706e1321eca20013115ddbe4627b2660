@@ -1,0 +1,83 @@
+package trees;
+
+import elvira.michael.LibraryDB;
+import elvira.michael.Link;
+import elvira.michael.MaxArray;
+
+/**
+ * IDTree.java
+ * Purpose: Tree of customers (and books in their possession). 
+ */
+
+public class IDTree extends RBTree{
+
+	private LibraryDB _libDB;
+	
+	public IDTree(MaxArray maxArr, LibraryDB libDB){
+		super();
+		_libDB = libDB;
+		
+	}
+	
+	protected Node createNode() {
+		return createNode("");
+	}
+	
+	protected Node createNode(String id) {
+		return new IDNode(id, "", _nil, _libDB);
+	}
+	
+	public void remove(String id) {
+		IDNode toRemove = search(id);
+		//Output
+		System.out.println("The following person was removed: " + id + ", " + toRemove.getName() +  ".\n");
+		toRemove.remove(toRemove);
+		delete(this, toRemove);
+		
+	}
+	
+	public void add(IDTree idTree, String id, String name){
+		//Output
+		System.out.println("The following person was added: " + id + ", " + name +  ".\n");
+		
+		IDNode toAdd = new IDNode(id, name, null, _libDB);
+		insert(this, toAdd);
+		
+	}
+	public IDNode search(String id) {
+		IDNode curr = (IDNode) _root;
+		
+		while(curr != _nil){
+			if(curr.getKey().equals(id))
+				return curr;
+			else if(id.compareTo(curr.getKey())<0)
+				curr =  (IDNode) curr._left;
+			else
+				curr =  (IDNode) curr._right;
+			
+		}
+		return curr;
+	}
+
+	public String booksToString(String iD) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+	public IDNode getNil() {
+		return (IDNode) _nil;
+	}
+
+	public IDNode getRoot() {
+		return (IDNode) _root;
+	}
+
+	public void setRoot(IDNode z) {
+		_root = z;
+	}
+	
+	
+	
+	
+}

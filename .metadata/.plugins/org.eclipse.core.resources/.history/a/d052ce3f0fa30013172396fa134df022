@@ -1,0 +1,314 @@
+package trees;
+
+public class RBTree {
+
+	protected Node _root, _nil;
+
+	public RBTree(){
+		_nil = createNode();
+		_nil.setColor(Node.BLACK);
+		_root = _nil;
+		_root._parent = _root._left = _root._right = _nil;
+	}
+	
+	protected Node createNode() {
+		return new Node("");
+	}
+	
+	protected Node createNode(String id) {
+		return new Node(id);
+	}
+
+	/**
+	 * TODO pg. 236
+	 * @param id
+	 */
+	public void insert(RBTree tree, Node z) {
+
+		Node y = _nil, x = _root;
+		//Node z = createNode(id); //TODO
+		z._left = z._right = _nil;
+		
+		while(x!=_nil){
+			y = x;
+			if(z.getKey().compareTo(x.getKey())<0)
+				x = x._left;
+			else
+				x = x._right;
+		}
+
+		z._parent=y;
+		if(y==tree._nil){
+			tree.setRoot(z);
+			tree._root._parent=tree._nil;//TODO try1
+		}
+		else if (z.getKey().compareTo(y.getKey())<0)
+			y._left=z;
+		else 
+			y._right=z;
+		z._left=tree._nil;
+		z._right=tree._nil;
+		z.setColor(Node.RED);
+
+		addFixUp(this ,z);
+	}
+	
+	//pg. 242 TODO comment
+	protected void delete(RBTree tree, Node z) {
+
+		Node y, x;
+		
+		if(z._left == tree.getNil() || z._right == tree.getNil())
+			y = z;
+		else
+			y = treeSuccessor(tree, z);
+
+		
+		if(y._left != tree.getNil())
+			x = y._left;
+		else
+			x = y._right;
+
+		x._parent = y._parent;
+
+		if(y._parent == tree.getNil())
+			tree.setRoot(x);
+		else{
+			if(y== y._parent._left)
+				y._parent._left = x;
+			else
+				y._parent._right = x;
+		}
+
+		if(y != z){
+			z.setKey(y.getKey());
+			//TODO SET the rest of the fields (of IDNode/BookNode)
+			
+		}
+		if(y._color == Node.BLACK)
+			deleteFixup(tree, x) ;
+		
+
+	}
+
+	//pg. 243 TODO comment
+	private void deleteFixup(RBTree tree, Node x) {
+		Node w;
+		while (x != _nil && x.getColor() == Node.BLACK){
+			if (x == x._parent._left){
+				w = x._parent._right;
+				if (w.getColor() == Node.RED){
+					w.setColor(Node.BLACK);
+					x._parent.setColor(Node.RED);
+					leftRotate(tree, x._parent);
+					w = x._parent._right;
+				}
+				if ( w._left.getColor() == Node.BLACK && w._right.getColor() == Node.BLACK){
+					w.setColor(Node.RED);
+					x = x._parent;
+				}
+				else{
+					if (w._right.getColor() == Node.BLACK){
+						w._left.setColor(Node.BLACK);
+						w.setColor(Node.RED);
+						rightRotate(tree, w);
+						w = x._parent._right;
+					}
+					w.setColor(x._parent.getColor());
+					x._parent.setColor(Node.BLACK);
+					w._right.setColor(Node.BLACK);
+					leftRotate(tree, x._parent);
+					x = _root;
+				}
+			}//end if
+			else{
+				w = x._parent._left;
+				if (w.getColor() == Node.RED){
+					w.setColor(Node.BLACK);
+					x._parent.setColor(Node.RED);
+					rightRotate(tree, x._parent);
+					w = x._parent._left;
+				}
+				if ( w._right.getColor() == Node.BLACK && w._left.getColor() == Node.BLACK){
+					w.setColor(Node.RED);
+					x = x._parent;
+				}
+				else{
+					if (w._left.getColor() == Node.BLACK){
+						w._right.setColor(Node.BLACK);
+						w.setColor(Node.RED);
+						leftRotate(tree, w);
+						w = x._parent._left;
+					}
+					w.setColor(x._parent.getColor());
+					x._parent.setColor(Node.BLACK);
+					w._left.setColor(Node.BLACK);
+					rightRotate(tree, x._parent);
+					x = _root;
+				}
+			}
+		}//End while
+	}
+
+	private Node treeSuccessor(RBTree tree, Node x) {
+		Node y;
+
+		if(x._right != tree._nil)
+			return treeMinimum(tree, x._right);
+		else{
+			y = x._parent;
+
+			while(y != tree.getNil() && x == y._right){
+				x = y;
+				y = y._parent;
+			}
+			return y;
+		}
+	}
+
+	private Node treeMinimum(RBTree tree, Node x) {
+
+		Node y= x;
+		
+		while(y._left != tree.getNil())
+			y = y._left;
+		return y;
+	}
+
+
+	/**
+	 * TODO pg. 236
+	 * @param obj 
+	 * @param z
+	 */
+	private void addFixUp(RBTree tree, Node z) {
+		Node y;
+
+		while (z._parent.getColor() == Node.RED){
+
+			if(z._parent == z._parent._parent._left){
+				y = z._parent._parent._right;
+				if(y.getColor() == Node.RED){
+					z._parent.setColor(Node.BLACK);
+					y.setColor(Node.BLACK);
+					z._parent._parent.setColor(Node.RED);
+					z = z._parent._parent;
+				}
+				else{
+					if(z == z._parent._right){
+						z = z._parent;
+						leftRotate(tree, z);
+					}
+					z._parent.setColor(Node.BLACK);
+					z._parent._parent.setColor(Node.RED);
+					rightRotate(tree, z._parent._parent);
+				}
+			}//end if
+
+			else{
+				y = z._parent._parent._left;
+				if(y.getColor() == Node.RED){
+					z._parent.setColor(Node.BLACK);
+					y.setColor(Node.BLACK);
+					z._parent._parent.setColor(Node.RED);
+					z = z._parent._parent;
+				}
+				else{ 
+					if(z == z._parent._left){
+						z = z._parent;
+						rightRotate(tree, z);
+					}
+					z._parent.setColor(Node.BLACK);
+					z._parent._parent.setColor(Node.RED);
+					leftRotate(tree, z._parent._parent);	
+				}
+			}//end else
+		}//end while
+
+		tree._root.setColor(Node.BLACK);
+	}
+
+	//TODO just copy-paste+ replace ?!?!
+	private void rightRotate(RBTree tree, Node x) {
+
+		Node y =  x._left;
+				
+		x._left=y._right; 
+		if(y._right != tree._nil)
+			y._right._parent = x;
+
+		y._parent = x._parent;
+		if(x._parent == tree._nil)
+			tree._root = y;
+		else if(x == x._parent._right)
+			x._parent._right = y;
+		else 
+			x._parent._left = y;
+		y._right = x;
+		x._parent = y;
+
+	}
+
+	//pg. 234
+	private void leftRotate(RBTree tree, Node x) {
+		
+		Node y = x._right;
+
+		x._right = y._left; 
+		if(y._left != tree._nil)
+			y._left._parent = x;
+
+		y._parent = x._parent;
+		if(x._parent == tree._nil)
+			tree.setRoot(y);
+		else if(x == x._parent._left)
+			x._parent._left = y;
+		else 
+			x._parent._right = y;
+		y._left = x;
+		x._parent = y;
+	}
+
+	public Node getNil() {
+		return _nil;
+	}
+
+	public void setNil(Node nil) {
+		_nil = nil;
+	}
+
+	public Node getRoot() {
+		return _root;
+	}
+
+	public void setRoot(Node root) {
+		_root = root;
+	}
+	
+	//TODO for testing
+	public String toString(){
+		String str = "";
+		toString(str, _root);
+		return str;
+	}
+
+	private void toString(String str, Node curr) {
+		if(curr==_nil || curr == null)
+			return;
+		
+
+		if(curr._left != _nil){
+			str = str + curr._left.getKey()+ ", ";
+			toString(str, curr._left);
+		}
+		
+		System.out.println(curr+ ", "+curr.getColor());
+		
+		if(curr._right != _nil){
+			str = str + curr._right.getKey()+ ", ";
+			toString(str, curr._right);
+		}
+	}
+
+	
+}

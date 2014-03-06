@@ -1,0 +1,15 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		System.out.println("Welcome to the Cash Register program.\n");
+		String line;
+		while((line = System.in.readLine()) != null) {
+			System.out.println("Please start inputting items.\nWhen done, press Crtl+D to end.\n");
+		}
+		
+
+	}
+
+}
