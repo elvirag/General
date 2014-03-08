@@ -1,0 +1,6 @@
+package trees;
+
+public class GenNode<T> {
+	public T info;
+	public GenNode<T> _parent, _left, _right;
+}

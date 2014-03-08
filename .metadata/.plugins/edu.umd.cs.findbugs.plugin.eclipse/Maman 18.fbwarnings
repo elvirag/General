@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="2.0.3" sequence="1" timestamp="1393877941667" analysisTimestamp="1393877937133" release="">
+  <Project projectName="Maman 18">
+    <Jar>C:\Users\elvirag.IL\Study\Maman 18\bin</Jar>
+    <AuxClasspathEntry>C:\Users\elvirag.IL\Study\Maman 18\bin</AuxClasspathEntry>
+    <SrcDir>C:\Users\elvirag.IL\Study\Maman 18\src</SrcDir>
+    <Cloud id="edu.umd.cs.findbugs.cloud.doNothingCloud" online="false"></Cloud>
+  </Project>
+  <BugInstance type="SBSC_USE_STRINGBUFFER_CONCATENATION" priority="2" abbrev="SBSC" category="PERFORMANCE" first="1">
+    <Class classname="elvira.michael.List">
+      <SourceLine classname="elvira.michael.List" sourcefile="List.java" sourcepath="elvira/michael/List.java"/>
+    </Class>
+    <Method classname="elvira.michael.List" name="toString" signature="()Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="elvira.michael.List" start="57" end="69" startBytecode="0" endBytecode="176" sourcefile="List.java" sourcepath="elvira/michael/List.java"/>
+    </Method>
+    <SourceLine classname="elvira.michael.List" start="65" end="65" startBytecode="34" endBytecode="34" sourcefile="List.java" sourcepath="elvira/michael/List.java"/>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" abbrev="Dm" category="I18N" first="1">
+    <Class classname="elvira.michael.Main">
+      <SourceLine classname="elvira.michael.Main" sourcefile="Main.java" sourcepath="elvira/michael/Main.java"/>
+    </Class>
+    <Method classname="elvira.michael.Main" name="main" signature="([Ljava/lang/String;)V" isStatic="true">
+      <SourceLine classname="elvira.michael.Main" start="16" end="27" startBytecode="0" endBytecode="170" sourcefile="Main.java" sourcepath="elvira/michael/Main.java"/>
+    </Method>
+    <Method classname="java.util.Scanner" name="&lt;init&gt;" signature="(Ljava/io/InputStream;)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.util.Scanner"/>
+    </Method>
+    <SourceLine classname="elvira.michael.Main" start="16" end="16" startBytecode="7" endBytecode="7" sourcefile="Main.java" sourcepath="elvira/michael/Main.java"/>
+    <SourceLine classname="elvira.michael.Main" start="16" end="16" startBytecode="7" endBytecode="7" sourcefile="Main.java" sourcepath="elvira/michael/Main.java"/>
+  </BugInstance>
+  <BugInstance type="SS_SHOULD_BE_STATIC" priority="2" abbrev="SS" category="PERFORMANCE" first="1">
+    <Class classname="elvira.michael.UI">
+      <SourceLine classname="elvira.michael.UI" sourcefile="UI.java" sourcepath="elvira/michael/UI.java"/>
+    </Class>
+    <Field classname="elvira.michael.UI" name="BOOK_LENGTH" signature="I" isStatic="false">
+      <SourceLine classname="elvira.michael.UI" sourcefile="UI.java" sourcepath="elvira/michael/UI.java"/>
+    </Field>
+    <SourceLine classname="elvira.michael.UI" start="12" end="12" startBytecode="13" endBytecode="13" sourcefile="UI.java" sourcepath="elvira/michael/UI.java"/>
+  </BugInstance>
+  <BugInstance type="SS_SHOULD_BE_STATIC" priority="2" abbrev="SS" category="PERFORMANCE" first="1">
+    <Class classname="elvira.michael.UI">
+      <SourceLine classname="elvira.michael.UI" sourcefile="UI.java" sourcepath="elvira/michael/UI.java"/>
+    </Class>
+    <Field classname="elvira.michael.UI" name="EMPTY_LN" signature="I" isStatic="false">
+      <SourceLine classname="elvira.michael.UI" sourcefile="UI.java" sourcepath="elvira/michael/UI.java"/>
+    </Field>
+    <SourceLine classname="elvira.michael.UI" start="14" end="14" startBytecode="18" endBytecode="18" sourcefile="UI.java" sourcepath="elvira/michael/UI.java"/>
+  </BugInstance>
+  <BugInstance type="SS_SHOULD_BE_STATIC" priority="2" abbrev="SS" category="PERFORMANCE" first="1">
+    <Class classname="elvira.michael.UI">
+      <SourceLine classname="elvira.michael.UI" sourcefile="UI.java" sourcepath="elvira/michael/UI.java"/>
+    </Class>
+    <Field classname="elvira.michael.UI" name="ERROR" signature="I" isStatic="false">
+      <SourceLine classname="elvira.michael.UI" sourcefile="UI.java" sourcepath="elvira/michael/UI.java"/>
+    </Field>
+    <SourceLine classname="elvira.michael.UI" start="14" end="14" startBytecode="33" endBytecode="33" sourcefile="UI.java" sourcepath="elvira/michael/UI.java"/>
+  </BugInstance>
+  <BugInstance type="SS_SHOULD_BE_STATIC" priority="2" abbrev="SS" category="PERFORMANCE" first="1">
+    <Class classname="elvira.michael.UI">
+      <SourceLine classname="elvira.michael.UI" sourcefile="UI.java" sourcepath="elvira/michael/UI.java"/>
+    </Class>
+    <Field classname="elvira.michael.UI" name="ID_LENGTH" signature="I" isStatic="false">
+      <SourceLine classname="elvira.michael.UI" sourcefile="UI.java" sourcepath="elvira/michael/UI.java"/>
+    </Field>
+    <SourceLine classname="elvira.michael.UI" start="12" end="12" startBytecode="7" endBytecode="7" sourcefile="UI.java" sourcepath="elvira/michael/UI.java"/>
+  </BugInstance>
+  <BugInstance type="SS_SHOULD_BE_STATIC" priority="2" abbrev="SS" category="PERFORMANCE" first="1">
+    <Class classname="elvira.michael.UI">
+      <SourceLine classname="elvira.michael.UI" sourcefile="UI.java" sourcepath="elvira/michael/UI.java"/>
+    </Class>
+    <Field classname="elvira.michael.UI" name="MSG" signature="I" isStatic="false">
+      <SourceLine classname="elvira.michael.UI" sourcefile="UI.java" sourcepath="elvira/michael/UI.java"/>
+    </Field>
+    <SourceLine classname="elvira.michael.UI" start="14" end="14" startBytecode="23" endBytecode="23" sourcefile="UI.java" sourcepath="elvira/michael/UI.java"/>
+  </BugInstance>
+  <BugInstance type="SS_SHOULD_BE_STATIC" priority="2" abbrev="SS" category="PERFORMANCE" first="1">
+    <Class classname="elvira.michael.UI">
+      <SourceLine classname="elvira.michael.UI" sourcefile="UI.java" sourcepath="elvira/michael/UI.java"/>
+    </Class>
+    <Field classname="elvira.michael.UI" name="QUESTION" signature="I" isStatic="false">
+      <SourceLine classname="elvira.michael.UI" sourcefile="UI.java" sourcepath="elvira/michael/UI.java"/>
+    </Field>
+    <SourceLine classname="elvira.michael.UI" start="14" end="14" startBytecode="28" endBytecode="28" sourcefile="UI.java" sourcepath="elvira/michael/UI.java"/>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="1" abbrev="DLS" category="STYLE" first="1">
+    <Class classname="testing.Tester">
+      <SourceLine classname="testing.Tester" sourcefile="Tester.java" sourcepath="testing/Tester.java"/>
+    </Class>
+    <Method classname="testing.Tester" name="main" signature="([Ljava/lang/String;)V" isStatic="true">
+      <SourceLine classname="testing.Tester" start="7" end="36" startBytecode="0" endBytecode="72" sourcefile="Tester.java" sourcepath="testing/Tester.java"/>
+    </Method>
+    <LocalVariable name="idtree" register="2" pc="24" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="testing.Tester" start="8" end="8" startBytecode="23" endBytecode="23" sourcefile="Tester.java" sourcepath="testing/Tester.java"/>
+    <SourceLine classname="testing.Tester" start="8" end="8" startBytecode="23" endBytecode="23" sourcefile="Tester.java" sourcepath="testing/Tester.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="idtree"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.DEAD_OBJECT_STORE" value="true"/>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP" priority="2" abbrev="EI" category="MALICIOUS_CODE" first="1">
+    <Class classname="trees.IDNode">
+      <SourceLine classname="trees.IDNode" sourcefile="IDNode.java" sourcepath="trees/IDNode.java"/>
+    </Class>
+    <Method classname="trees.IDNode" name="getBooks" signature="()[Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="trees.IDNode" start="102" end="102" startBytecode="0" endBytecode="46" sourcefile="IDNode.java" sourcepath="trees/IDNode.java"/>
+    </Method>
+    <Field classname="trees.IDNode" name="_books" signature="[Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="trees.IDNode" sourcefile="IDNode.java" sourcepath="trees/IDNode.java"/>
+    </Field>
+    <SourceLine classname="trees.IDNode" start="102" end="102" startBytecode="4" endBytecode="4" sourcefile="IDNode.java" sourcepath="trees/IDNode.java"/>
+    <SourceLine classname="trees.IDNode" start="102" end="102" startBytecode="4" endBytecode="4" sourcefile="IDNode.java" sourcepath="trees/IDNode.java"/>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP2" priority="2" abbrev="EI2" category="MALICIOUS_CODE" first="1">
+    <Class classname="trees.IDNode">
+      <SourceLine classname="trees.IDNode" sourcefile="IDNode.java" sourcepath="trees/IDNode.java"/>
+    </Class>
+    <Method classname="trees.IDNode" name="setBooks" signature="([Ljava/lang/String;)V" isStatic="false">
+      <SourceLine classname="trees.IDNode" start="118" end="119" startBytecode="0" endBytecode="61" sourcefile="IDNode.java" sourcepath="trees/IDNode.java"/>
+    </Method>
+    <Field classname="trees.IDNode" name="_books" signature="[Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="trees.IDNode" sourcefile="IDNode.java" sourcepath="trees/IDNode.java"/>
+    </Field>
+    <LocalVariable name="books" register="1" pc="2" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="trees.IDNode" start="118" end="118" startBytecode="2" endBytecode="2" sourcefile="IDNode.java" sourcepath="trees/IDNode.java"/>
+    <SourceLine classname="trees.IDNode" start="118" end="118" startBytecode="2" endBytecode="2" sourcefile="IDNode.java" sourcepath="trees/IDNode.java"/>
+  </BugInstance>
+  <BugInstance type="SBSC_USE_STRINGBUFFER_CONCATENATION" priority="2" abbrev="SBSC" category="PERFORMANCE" first="1">
+    <Class classname="trees.IDNode">
+      <SourceLine classname="trees.IDNode" sourcefile="IDNode.java" sourcepath="trees/IDNode.java"/>
+    </Class>
+    <Method classname="trees.IDNode" name="printBooks" signature="()Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="trees.IDNode" start="90" end="97" startBytecode="0" endBytecode="162" sourcefile="IDNode.java" sourcepath="trees/IDNode.java"/>
+    </Method>
+    <SourceLine classname="trees.IDNode" start="94" end="94" startBytecode="32" endBytecode="32" sourcefile="IDNode.java" sourcepath="trees/IDNode.java"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Mon, 3 Mar 2014 22:06:11 +0200" total_classes="14" referenced_classes="37" total_bugs="12" total_size="687" num_packages="3" vm_version="23.25-b01" cpu_seconds="13.01" clock_seconds="4.54" peak_mbytes="270.10" alloc_mbytes="455.12" gc_seconds="0.06" priority_2="10" priority_1="2">
+    <PackageStats package="elvira.michael" total_bugs="8" total_types="6" total_size="238" priority_2="7" priority_1="1">
+      <ClassStats class="elvira.michael.LibraryDB" sourceFile="LibraryDB.java" interface="false" size="38" bugs="0"/>
+      <ClassStats class="elvira.michael.Link" sourceFile="Link.java" interface="false" size="37" bugs="0"/>
+      <ClassStats class="elvira.michael.List" sourceFile="List.java" interface="false" size="42" bugs="1" priority_2="1"/>
+      <ClassStats class="elvira.michael.Main" sourceFile="Main.java" interface="false" size="12" bugs="1" priority_1="1"/>
+      <ClassStats class="elvira.michael.MaxArray" sourceFile="MaxArray.java" interface="false" size="35" bugs="0"/>
+      <ClassStats class="elvira.michael.UI" sourceFile="UI.java" interface="false" size="74" bugs="6" priority_2="6"/>
+    </PackageStats>
+    <PackageStats package="testing" total_bugs="1" total_types="1" total_size="25" priority_1="1">
+      <ClassStats class="testing.Tester" sourceFile="Tester.java" interface="false" size="25" bugs="1" priority_1="1"/>
+    </PackageStats>
+    <PackageStats package="trees" total_bugs="3" total_types="7" total_size="424" priority_2="3">
+      <ClassStats class="trees.BookNode" sourceFile="BookNode.java" interface="false" size="14" bugs="0"/>
+      <ClassStats class="trees.BookTree" sourceFile="BookTree.java" interface="false" size="41" bugs="0"/>
+      <ClassStats class="trees.IDNode" sourceFile="IDNode.java" interface="false" size="87" bugs="3" priority_2="3"/>
+      <ClassStats class="trees.IDTree" sourceFile="IDTree.java" interface="false" size="42" bugs="0"/>
+      <ClassStats class="trees.Node" sourceFile="Node.java" interface="false" size="34" bugs="0"/>
+      <ClassStats class="trees.Node$Color" sourceFile="Node.java" interface="false" size="10" bugs="0"/>
+      <ClassStats class="trees.RBTree" sourceFile="RBTree.java" interface="false" size="196" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="de.tobject.findbugs.builder.FindBugs2Eclipse" totalMilliseconds="493" invocations="2" avgMicrosecondsPerInvocation="246768" maxMicrosecondsPerInvocation="300678" standardDeviationMircosecondsPerInvocation="53910"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="424" invocations="366" avgMicrosecondsPerInvocation="1160" maxMicrosecondsPerInvocation="13281" standardDeviationMircosecondsPerInvocation="1957"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="262" invocations="37" avgMicrosecondsPerInvocation="7101" maxMicrosecondsPerInvocation="70388" standardDeviationMircosecondsPerInvocation="13817"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="257" invocations="111" avgMicrosecondsPerInvocation="2316" maxMicrosecondsPerInvocation="40549" standardDeviationMircosecondsPerInvocation="5285"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="246" invocations="111" avgMicrosecondsPerInvocation="2220" maxMicrosecondsPerInvocation="56468" standardDeviationMircosecondsPerInvocation="7217"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="227" invocations="115" avgMicrosecondsPerInvocation="1982" maxMicrosecondsPerInvocation="39280" standardDeviationMircosecondsPerInvocation="4708"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="207" invocations="115" avgMicrosecondsPerInvocation="1802" maxMicrosecondsPerInvocation="70944" standardDeviationMircosecondsPerInvocation="7133"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="198" invocations="191" avgMicrosecondsPerInvocation="1039" maxMicrosecondsPerInvocation="8323" standardDeviationMircosecondsPerInvocation="1539"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="142" invocations="115" avgMicrosecondsPerInvocation="1235" maxMicrosecondsPerInvocation="14962" standardDeviationMircosecondsPerInvocation="2594"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="124" invocations="115" avgMicrosecondsPerInvocation="1085" maxMicrosecondsPerInvocation="16769" standardDeviationMircosecondsPerInvocation="2080"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="78" invocations="81" avgMicrosecondsPerInvocation="967" maxMicrosecondsPerInvocation="11947" standardDeviationMircosecondsPerInvocation="1816"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="77" invocations="368" avgMicrosecondsPerInvocation="209" maxMicrosecondsPerInvocation="1672" standardDeviationMircosecondsPerInvocation="167"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="75" invocations="37" avgMicrosecondsPerInvocation="2031" maxMicrosecondsPerInvocation="18608" standardDeviationMircosecondsPerInvocation="3361"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="65" invocations="115" avgMicrosecondsPerInvocation="569" maxMicrosecondsPerInvocation="46234" standardDeviationMircosecondsPerInvocation="4279"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="60" invocations="37" avgMicrosecondsPerInvocation="1647" maxMicrosecondsPerInvocation="11362" standardDeviationMircosecondsPerInvocation="2809"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="57" invocations="37" avgMicrosecondsPerInvocation="1566" maxMicrosecondsPerInvocation="16293" standardDeviationMircosecondsPerInvocation="2924"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="54" invocations="115" avgMicrosecondsPerInvocation="471" maxMicrosecondsPerInvocation="9036" standardDeviationMircosecondsPerInvocation="1072"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="54" invocations="37" avgMicrosecondsPerInvocation="1460" maxMicrosecondsPerInvocation="12210" standardDeviationMircosecondsPerInvocation="2502"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNullDeref" totalMilliseconds="52" invocations="14" avgMicrosecondsPerInvocation="3736" maxMicrosecondsPerInvocation="42256" standardDeviationMircosecondsPerInvocation="10696"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="47" invocations="37" avgMicrosecondsPerInvocation="1283" maxMicrosecondsPerInvocation="6184" standardDeviationMircosecondsPerInvocation="1663"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="45" invocations="335" avgMicrosecondsPerInvocation="135" maxMicrosecondsPerInvocation="1389" standardDeviationMircosecondsPerInvocation="213"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindOpenStream" totalMilliseconds="43" invocations="14" avgMicrosecondsPerInvocation="3132" maxMicrosecondsPerInvocation="21814" standardDeviationMircosecondsPerInvocation="5557"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.URLProblems" totalMilliseconds="43" invocations="14" avgMicrosecondsPerInvocation="3085" maxMicrosecondsPerInvocation="14453" standardDeviationMircosecondsPerInvocation="3572"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="39" invocations="46" avgMicrosecondsPerInvocation="869" maxMicrosecondsPerInvocation="15953" standardDeviationMircosecondsPerInvocation="2371"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History>
+    <AppVersion sequence="0" timestamp="1393877941663" release="" codeSize="0" numClasses="0"/>
+  </History>
+</BugCollection>
