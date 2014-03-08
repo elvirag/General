@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring accessors="true" comment="Delete 4 elements from project &apos;Maman14&apos;&#x0D;&#x0A;- Original project: &apos;Maman14&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     elvira_michael.DataGenerator.java&#x0D;&#x0A;     elvira_michael.Heap.java&#x0D;&#x0A;     elvira_michael.Select.java&#x0D;&#x0A;     elvira_michael.UserInterface.java" description="Delete elements" element1="/src&lt;elvira_michael{DataGenerator.java" element2="/src&lt;elvira_michael{Heap.java" element3="/src&lt;elvira_michael{Select.java" element4="/src&lt;elvira_michael{UserInterface.java" elements="4" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1386881933705" subPackages="false" version="1.0"/>
-</session>
