@@ -10,7 +10,7 @@ public class DeckOfCards {
 	private static final Random randomNumbers = new Random();
 	
 	public DeckOfCards(){
-		String[] faces = {"ACE", "Deuce", "Three", "Four", "Five", "Six", "Seven",
+		String[] faces = {"Deuce", "Three", "Four", "Five", "Six", "Seven",
 				"Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"};
 		
 		String[] suites = {"Hearts", "Diamonds", "Clubs", "Spades"};
