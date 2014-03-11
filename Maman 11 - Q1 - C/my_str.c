@@ -7,10 +7,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int suffix(char str[], char c);
+
+
 int suffix(char str[], char c){
 	int seifaNum = 0;
 	int i = 0, j =0;
 
+	printf("\n");
 	while (str[i] != '\0') // going over the whole string.
 	{
 		if (str[i] == c)
@@ -36,7 +40,9 @@ int main() // to fix with Ido :(
 	int lenght = 100;
 	int count = 0;  //to keep track of how many chars have been used
 	char c; // to store the current char
-	char * str = malloc(lenght * sizeof(char)); //suppose it's max of 100 chars.
+	char * str = calloc(lenght, sizeof(char)); //suppose it's max of 100 chars.
+	 if ( *str == NULL)
+		return NULL;
 	char seifabegining;
 
 
@@ -46,7 +52,11 @@ int main() // to fix with Ido :(
 		printf("Please enter your string. 'Enter' signifies end of string.\n");
 		while((c = getchar()) != '\n'){ //keep reading until a newline
 			if(count >= lenght)
-				str = realloc(str, (lenght += 10) * sizeof(char)); //add room for 10 more chars
+			{
+				lenght += 10;
+				str = realloc(str, lenght * sizeof(char)); //add room for 10 more chars
+			}
+
 			str[count++] = c;
 		}
 		if (str == '\0'){
@@ -54,8 +64,8 @@ int main() // to fix with Ido :(
 		}
 		printf("Please enter the letter you want your seifas to end with:\n");
 		scanf("%c", &seifabegining);
-		printf("Number of seifas found was: %d\n",suffix( str[lenght], seifabegining));
+		printf("\nNumber of seifas found was: %d\n\n",suffix( str, seifabegining));
+		free(str);
 	}
-	free(str);
 }
 
