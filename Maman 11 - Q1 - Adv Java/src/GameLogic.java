@@ -23,7 +23,7 @@ public class GameLogic{
 		JOptionPane.showMessageDialog(_pane, "Welcome to BlackJack!");
 		beginDeal();
 		hitHouse();
-		//hitPlayer();
+		hitPlayer();
 	}
 	//deal two cards to both players
 	private void beginDeal(){

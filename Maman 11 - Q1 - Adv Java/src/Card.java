@@ -89,7 +89,7 @@ public class Card {
 	}
 	
 	public String toString(){
-		return getSuite() + " of " + _name;
+		return _name + " of " + getSuite();
 	}
 
 }

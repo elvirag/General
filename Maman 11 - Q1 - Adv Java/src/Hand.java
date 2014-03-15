@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
 public class Hand {
 
 	private static final int ACE_ONE = 10; // the subtraction from the Ace so it can serve as value = 1
@@ -22,7 +20,7 @@ public class Hand {
 	public int getHandValue() {
 		if (!gotAce)
 			for (int i = 0 ; i < _hand.size() ; i++)
-				if (_hand.get(_hand.lastIndexOf(_hand)).getCardValue() == 11)
+				if (_hand.get(i).getCardValue() == 11)
 					gotAce = true;
 		if (gotAce && _handValue > 20){
 			_handValue -= ACE_ONE;
@@ -31,10 +29,10 @@ public class Hand {
 	}
 
 	public String showHand(){ // it's like the toString() of Hand.
-		String str = null;
-		for (int i = 0 ; i < _hand.size() -1 ; i++)
+		String str = "";
+		for (int i = 0 ; i < _hand.size() - 1 ; i++)
 			str += _hand.get(i).toString() + ", ";
-		str += _hand.get(_hand.lastIndexOf(_hand)).toString() + ". Hand value is: " + getHandValue() + ".\n";
+		str += _hand.get(_hand.size() - 1).toString() + ".\nHand value is: " + getHandValue() + ".\n";
 		return str;
 	}
 }
