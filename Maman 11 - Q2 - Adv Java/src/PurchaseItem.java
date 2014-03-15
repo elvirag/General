@@ -5,7 +5,7 @@ public class PurchaseItem {
 	private int _amount;
 	private float _price;
 
-	public PurchaseItem(String itemName, int amount, float price) {
+	public PurchaseItem(String itemName, int amount, float price) { //uses setters to construct & initialize  object
 
 		setItemName(itemName);
 		setAmount(amount);
@@ -58,7 +58,10 @@ public class PurchaseItem {
 			System.out.println("The price of items is illegal.\nThe price has been set to 0.\n");
 		}
 	}
-	
+	/**
+	 * 
+	 * @return returns toString() of the purchased item.
+	 * */
 	public String toString(){
 		return  "Item: " + _itemName + "   #: " + _amount + "    total price: " + _price; 
 	}

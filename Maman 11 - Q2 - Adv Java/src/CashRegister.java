@@ -29,9 +29,9 @@ public class CashRegister {
 	}
 
 	public void itemPurchase(String itemName, int amount, float price){
-		_itemArray.add(new PurchaseItem(itemName, amount, price));
-		_bill += _itemArray.get(_itemNumber).getPrice();
-		_itemNumber++;
+		_itemArray.add(new PurchaseItem(itemName, amount, price)); // adding a new item while constructing it.
+		_bill += _itemArray.get(_itemNumber).getPrice(); // adding the cost of the item to the bill
+		_itemNumber++; // counting item number.
 	}
 
 	public float payment(float f){
@@ -44,10 +44,18 @@ public class CashRegister {
 		return change;
 	}
 
+	/**
+	 * @return a float the represents all the purchases today, not including pending bill.
+	 * */
 	public float overallSumReturn(){
 		return _overAllPurchases;
 	}
 
+	/**
+	 * Checks if there is no items in the current bill.
+	 * @return an array that contains items that are in the current bill
+	 *  
+	 * */
 	public PurchaseItem[] arrayItems(){
 		if (_itemNumber == 0)
 			return null;
@@ -56,15 +64,27 @@ public class CashRegister {
 			return _itemArray.toArray(shoppingList);
 		}
 	}
-
+	
+	/**
+	 * @param the number the user inputs to start the cash-register. If negative, is set to zero.
+	 * */
 	public void setOverAllPurchases(int overAllPurchases) {
-		_overAllPurchases = overAllPurchases;
+		if (overAllPurchases < 0){
+			System.out.print("\nYou can't input a negative sum to the register. The sum has been determined as 0.\n");
+			_overAllPurchases = 0;
+		}
+		else _overAllPurchases = overAllPurchases;
 	}
-
+	
+	/**
+	 * @return all the purchases in the cash register today (not including current bill
+	 * */
 	public float getOverAllPurchases() {
 		return _overAllPurchases;
 	}
-
+	/**
+	 * @return the total bill of current items.
+	 * */
 	public float get_bill() {
 		return _bill;
 	}

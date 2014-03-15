@@ -2,12 +2,15 @@ import java.util.Scanner;
 
 
 public class UI {
+	/**
+	 * The class that performs all input and output from user.
+	 * */
 
 	CashRegister A = null;
 	boolean stopShopping = true; // end of shopping - flag
 	boolean paySufficient = true; // payment was sufficient, can close bill.
 	boolean rightFormat = true; // item was inputed in the right form. Can process it.
-	Scanner input = new Scanner(System.in);
+	Scanner input = new Scanner(System.in); // my input object. Is reused and closed at the end of the object method.
 
 	public void start(){
 
@@ -23,17 +26,26 @@ public class UI {
 
 		if (answer1.matches("1")){
 			A = new CashRegister();
+			initialization();
 		}
 		else if (answer1.matches("2")){
 			System.out.println("\nYou have chosen to initialize with a pre-defined sum.\nPlease enter the sum: \n");
 			A = new CashRegister(input.nextInt());
+			initialization();
 		}
 		else {
 			System.out.print("\nYour choice isn't valid. Re-run the program.\n");
 			System.exit(2);
 		}
+	}
+	private void initialization(){
 
 		System.out.print("The Automated_CaShReGistEr has been initialized to the amount of: " + A.getOverAllPurchases() + "\n");
+		mainUI();
+
+	}
+
+	private void mainUI(){
 		do {
 			System.out.print("\n\nYour options are as follows:\n" +
 					"1.) Add an item to the bill.\n" +
@@ -49,7 +61,7 @@ public class UI {
 				do
 				{
 					input.reset();
-					System.out.print("\nInput item name, amount and price, separated by commas.\nFor example:Orange, 3, 2.30\n");
+					System.out.print("\nInput item name, amount and price, separated by commas.\nFor example:Orange,3,2.30\n"); // if not inputted this way, it won't work. Assumes correct input!
 					String[] tokens = input.next().split(",");
 					//System.out.print("\nNumber of tokens:" + tokens.length); //TODO
 					if (tokens.length != 3)
