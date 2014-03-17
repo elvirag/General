@@ -44,6 +44,7 @@ public class CashRegister {
 		return change;
 	}
 
+	
 	/**
 	 * @return a float the represents all the purchases today, not including pending bill.
 	 * */
@@ -68,7 +69,7 @@ public class CashRegister {
 	/**
 	 * @param the number the user inputs to start the cash-register. If negative, is set to zero.
 	 * */
-	public void setOverAllPurchases(int overAllPurchases) {
+	private void setOverAllPurchases(int overAllPurchases) {
 		if (overAllPurchases < 0){
 			System.out.print("\nYou can't input a negative sum to the register. The sum has been determined as 0.\n");
 			_overAllPurchases = 0;
@@ -88,6 +89,5 @@ public class CashRegister {
 	public float get_bill() {
 		return _bill;
 	}
-
 
 }

@@ -1,9 +1,9 @@
 
 public class PurchaseItem {
 	
-	private String _itemName;
-	private int _amount;
-	private float _price;
+	private String _itemName; // the name of the item
+	private int _amount; //the amount of items
+	private float _price; //the price of the item (amount times single item price)
 
 	public PurchaseItem(String itemName, int amount, float price) { //uses setters to construct & initialize  object
 
@@ -12,18 +12,7 @@ public class PurchaseItem {
 		setPrice(price);
 	}
 
-	/**
-	 * @return the itemName
-	 */
-	public String getItemName() {
-		return _itemName;
-	}
-	/**
-	 * @return the amount
-	 */
-	public int getAmount() {
-		return _amount;
-	}
+
 	/**
 	 * @return the price
 	 */
@@ -33,13 +22,13 @@ public class PurchaseItem {
 	/**
 	 * @param itemName the itemName to set
 	 */
-	public void setItemName(String itemName) {
+	private void setItemName(String itemName) {
 		_itemName = itemName;
 	}
 	/**
 	 * @param amount the amount to set
 	 */
-	public void setAmount(int amount) {
+	private void setAmount(int amount) {
 		if (amount > 0)
 			_amount = amount;
 		else{
@@ -50,9 +39,9 @@ public class PurchaseItem {
 	/**
 	 * @param price the price to set
 	 */
-	public void setPrice(float price) {
+	private void setPrice(float price) {
 		if (price > 0)
-			_price = price*getAmount();
+			_price = price*_amount;
 		else{
 			_price = 0;
 			System.out.println("The price of items is illegal.\nThe price has been set to 0.\n");

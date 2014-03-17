@@ -12,6 +12,10 @@ public class UI {
 	boolean rightFormat = true; // item was inputed in the right form. Can process it.
 	Scanner input = new Scanner(System.in); // my input object. Is reused and closed at the end of the object method.
 
+	
+	/**
+	 * Starts all TODO: Try to make OOP
+	 */
 	public void start(){
 
 		System.out.print("Welcome to the Automated_CaShReGistEr (TM)!\n" +

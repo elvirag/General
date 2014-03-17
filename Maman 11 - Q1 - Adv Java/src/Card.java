@@ -1,3 +1,11 @@
+/**
+ *<h4><b>Class:</b></h4>
+ *Card<br>
+ *Represents Cards
+ *<br><br>
+ *@author Elvira Gandelman
+ */
+
 
 public class Card {
 
@@ -7,12 +15,16 @@ public class Card {
 
 	public Card(String face, String suite){
 		_face = initializeValueCard(face);
-		setSuite(suite);
+		_suite = suite;
 	}
-
+	/**
+	 * 
+	 * @param face Gets the number on the card as a String and assigns each a value. <br>Could have used enum. <br>Didn't because had to do two things at once - assign a value and keep the string.<br><br>
+	 * @return value of card
+	 */
 	private int initializeValueCard(String face){
 		int value = 0;
-		
+
 		switch(face){ //In JAVA 7 you can use String in switch-case :)
 		case "Deuce":
 			value = 2;
@@ -75,21 +87,21 @@ public class Card {
 		return value;
 	}
 
-
+	
+/**
+ * Gets Card value
+ * @return the face of the card
+ */
 	public int getCardValue(){
 		return _face;
 	}
 
-	public String getSuite() {
-		return _suite;
-	}
-
-	public void setSuite(String suite) {
-		_suite = suite;
-	}
-	
+	/**
+	 * toString() of the Class
+	 * @return Name of Card as  a String
+	 */
 	public String toString(){
-		return _name + " of " + getSuite();
+		return _name + " of " + _suite;
 	}
 
 }

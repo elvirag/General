@@ -1,14 +1,15 @@
-
+/**
+ * @param ID 307032623 
+ * @param Course Advanced Java Programming
+ * @param Maman Maman 11
+ * @author Elvira Gandelman
+ * */
 public class Main {
 
-	private static final int GAME_START = 0;
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) { //the main method
 		GameLogic newGame = new GameLogic();
-		newGame.newGame(GAME_START);
+		newGame.beginPlay(); // the first method to play
 	}
 
 }
