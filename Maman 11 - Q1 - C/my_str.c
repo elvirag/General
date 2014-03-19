@@ -15,7 +15,8 @@ int suffix(char str[], char c){
 	int i = 0, j =0;
 
 	printf("\n");
-	while (str[i] != '\0') // going over the whole string.
+	//while (str[i] != '\0') // going over the whole string.
+	while (str [i] != '\n')
 	{
 		if (str[i] == c)
 		{
@@ -34,15 +35,16 @@ int suffix(char str[], char c){
 	return seifaNum;
 }
 
-int main() // to fix with Ido :(
+int main()
 {
 
 	int lenght = 100;
 	int count = 0;  //to keep track of how many chars have been used
 	char c; // to store the current char
-	char * str = calloc(lenght, sizeof(char)); //suppose it's max of 100 chars.
-	 if ( *str == NULL)
-		return NULL;
+	char * str;
+	str = calloc(lenght, sizeof(char)); //suppose it's max of 100 chars.
+	 if ( str == NULL)
+		return  -1;
 	char seifabegining;
 
 
