@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class Hand {
 
 	private static final int ACE_ONE = 10; // the subtraction from the Ace so it can serve as value = 1
+	private static final int BLACKJACK = 22; //The number that represents bust in BlackJack (Rules of BlackJack)
 	private int _handValue; //each hand has it's value so we can know who won
 	private ArrayList<Card> _hand; //the cards in hand - used arraylist because it is dynamic.
 	private int countAce = 0; // checking if player/house have an ace
@@ -46,7 +47,7 @@ public class Hand {
 	 * @return _handValue - the value of the hand.
 	 */
 	public int getHandValue() {
-		if (countAce > 0 && _handValue > 2*ACE_ONE){ //the problem of counting aces.
+		if (countAce > 0 && _handValue > BLACKJACK){ //the problem of counting aces.
 			_handValue -= ACE_ONE;
 			countAce--; // we need to remember that we subtracted the ace already.
 		}
