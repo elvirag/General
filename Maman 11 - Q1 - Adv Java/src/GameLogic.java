@@ -14,31 +14,42 @@ public class GameLogic{
 
 	private static final int FIRST_DEAL = 2; // How many cards to deal at first. (Rules of BlackJack)
 	private static final int MAX_HAND_VALUE = 17; //By researching, house usually holds if it's 17 or more (Rules of BlackJack)
-	private static final int BLACKJACK = 21; //The number that represents BlackJack (Rules of BlackJack)
+	private static final int BLACKJACK = 22; //The number that represents bust in BlackJack (Rules of BlackJack)
 	private Hand _playerHand; //the hand of the player.
 	private Hand _houseHand; //the hand of the house
 	private DeckOfCards _gameDeck; 	//The Game Deck
-	private GameLogic _newGame; //an instance of the game
-	public JOptionPane _pane = new JOptionPane(); //our lovely GUI pane :)
+//	private GameLogic _newGame; //an instance of the game
+	public JOptionPane _pane; //our lovely GUI pane :)
+	private boolean _isFirst;
 
 
 	/**
 	 * The Constructor
 	 * Does what is needed to initialize the game:<br> Gets a deck, shuffles it and initializes the two hands - <b>house</b> and <b>player</b>.
 	 */
+	public GameLogic(boolean isFirst){
+		init();
+		_isFirst = isFirst;
+	} // end of Constructor
+	
 	public GameLogic(){
+		this(true);
+	}
+	
+	private void init(){
 		_gameDeck = new DeckOfCards(); //setting up a new deck
 		_gameDeck.shuffle(); // shuffle deck before starting to deal.
 		_playerHand = new Hand(); //setting up a hand for the player
 		_houseHand = new Hand(); //setting up a hand for the House/Dealer.
-	} // end of Constructor
-
+		_pane = new JOptionPane(); // setting up the pane
+	}
 	
 	/**
 	 * The only public method. Begins the game.
 	 */
 	public void beginPlay(){
-		JOptionPane.showMessageDialog(_pane, "Welcome to BlackJack!"); // shows a panel welcoming us
+		if (_isFirst)
+			JOptionPane.showMessageDialog(_pane, "Welcome to BlackJack!"); // shows a welcoming panel
 		beginDeal(); //begins deal
 		hitHouse(); //deals the house till bust or holds.
 		hitPlayer();//deals the player  + input
@@ -86,7 +97,7 @@ public class GameLogic{
 		while (drawCards() == JOptionPane.YES_OPTION) { // till the player doesn't want another card
 			_playerHand.addCard(_gameDeck.dealCard()); //take another card
 			if (_playerHand.getHandValue() >= BLACKJACK) { //if bust, show dialog with "BUST" and stop drawing.
-				JOptionPane.showMessageDialog(null, "Sorry, your hand value is higher than " + BLACKJACK + "\nLet's see how the house did...\n\nClick \"OK\" to see the results.\n", "Your Hand is over 21...", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Sorry, your hand value is " + _playerHand.getHandValue() + ".\nLet's see how the house did...\n\nClick \"OK\" to see the results.\n", "Your Hand is higher than 21...", JOptionPane.PLAIN_MESSAGE);
 				break; //stops the dialog from showing, so the player can't draw more cards.
 			}
 		}
@@ -145,8 +156,9 @@ public class GameLogic{
 			System.exit(0);
 		}
 		else if (input == JOptionPane.YES_OPTION){
-			_newGame = new GameLogic();
-			_newGame.beginPlay();
+			_isFirst = false;
+			init();
+			beginPlay();
 		}
 	}
 
