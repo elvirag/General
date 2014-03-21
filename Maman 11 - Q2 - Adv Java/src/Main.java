@@ -5,7 +5,7 @@ public class Main {
 
 		UI ui = new UI();
 		
-		ui.start(); // the start of the first method in the UI object (class) 
+		ui.getInit(); // the start of the first method in the UI object (class) 
 	}
 
 }

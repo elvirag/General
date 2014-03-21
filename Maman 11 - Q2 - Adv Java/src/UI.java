@@ -12,11 +12,12 @@ public class UI {
 	boolean rightFormat = true; // item was inputed in the right form. Can process it.
 	Scanner input = new Scanner(System.in); // my input object. Is reused and closed at the end of the object method.
 
-	
+
 	/**
-	 * Starts all TODO: Try to make OOP
+	 * This is the initialization of the register.
+	 * @return The choice of the user for initialization
 	 */
-	public void start(){
+	private String init(){
 
 		System.out.print("Welcome to the Automated_CaShReGistEr (TM)!\n" +
 				"We are always proud to serve!\n" +
@@ -26,7 +27,31 @@ public class UI {
 				"2.) Initialize with a defined sum.\n" +
 				"> ");
 
-		String answer1 = input.next();
+		return input.next();
+	}
+
+	/**
+	 * This is the menu that is displayed to the user
+	 * @return User's choice in the menu
+	 */
+	private String menu(){
+		System.out.print("\n\nYour options are as follows:\n" +
+				"1.) Add an item to the bill.\n" +
+				"2.) Display list of all items.\n" +
+				"3.) Display the total bill so far\n" +
+				"4.) Pay for your groceries and close your bill.\n" +
+				"5.) For managers only: View the total amount of purchases in the Automated_CaShReGistEr\n" +
+				"6.) Exit.\n" +
+				"> ");	
+		return input.next();
+	}
+
+	
+	/**
+	 * Gets the users choice and initializes the register
+	 */
+	public void getInit(){
+		String answer1 = init();
 
 		if (answer1.matches("1")){
 			A = new CashRegister();
@@ -42,30 +67,30 @@ public class UI {
 			System.exit(2);
 		}
 	}
+
+	
+	/**
+	 * Starting up the cahs register after initialization
+	 */
 	private void initialization(){
 
 		System.out.print("The Automated_CaShReGistEr has been initialized to the amount of: " + A.getOverAllPurchases() + "\n");
 		mainUI();
-
 	}
 
+	/**
+	 * Figuratively, the UI handling<br>
+	 * <b>Important to note:</b>  the input was assumed to be input correctly.
+	 */
 	private void mainUI(){
 		do {
-			System.out.print("\n\nYour options are as follows:\n" +
-					"1.) Add an item to the bill.\n" +
-					"2.) Display list of all items.\n" +
-					"3.) Display the total bill so far\n" +
-					"4.) Pay for your groceries and close your bill.\n" +
-					"5.) For managers only: View the total amount of purchases in the Automated_CaShReGistEr\n" +
-					"6.) Exit.\n" +
-					"> ");
-			String answer2 = input.next();
+			String answer2 = menu();
 			switch(answer2){
 			case "1":
 				do
 				{
 					input.reset();
-					System.out.print("\nInput item name, amount and price, separated by commas.\nFor example:Orange,3,2.30\n"); // if not inputted this way, it won't work. Assumes correct input!
+					System.out.print("\nInput item name, amount and price, separated by commas.\nFor example:Orange,3,2.30\n"); // if not input this way, it won't work. Assumes correct input!
 					String[] tokens = input.next().split(",");
 					//System.out.print("\nNumber of tokens:" + tokens.length); //TODO
 					if (tokens.length != 3)
@@ -123,6 +148,6 @@ public class UI {
 		} while (stopShopping);
 
 
-		input.close();
+		input.close(); //closing the input
 	}
 }
