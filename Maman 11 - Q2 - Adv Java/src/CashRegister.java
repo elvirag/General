@@ -15,7 +15,7 @@ public class CashRegister {
 	private int _itemNumber = 0; // the counter for items (needed in array progression)
 
 	public CashRegister(int initialMoney) { //money in register or zero if illegal sum
-		if (initialMoney > 0)
+		if (initialMoney >= 0)
 			setOverAllPurchases(initialMoney);
 		else{
 			setOverAllPurchases(0); // nullify if you have an illegal sum inputed.
