@@ -1,14 +1,14 @@
 
 public abstract class Expression {
 
-	public abstract double calculate();
+	public abstract double calculate(); //the abstract method
 	
-	public int equals(Expression exp1){
-		if (Expression.this.calculate() > exp1.calculate())
-			return 1;
-		else if (Expression.this.calculate() < exp1.calculate())
-			return -1;
+	@Override
+	public boolean equals(Object exp1){
+
+		if (Expression.this.calculate() != ((Expression) exp1).calculate())
+			return false;
 		else
-			return 0;
+			return true;
 	}
 }

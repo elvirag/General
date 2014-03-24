@@ -1,9 +1,6 @@
 
 public class SubtractionExpression extends CompoundExpression {
 
-	private Expression _exp1;
-	private Expression _exp2;
-	
 	public SubtractionExpression(Expression exp1, Expression exp2) {
 		super(exp1, exp2);
 	}
@@ -13,4 +10,7 @@ public class SubtractionExpression extends CompoundExpression {
 		return _exp1.calculate() - _exp2.calculate();
 	}
 
+	public String toString(){
+		return "( " + _exp1.toString() + " - " + _exp2.toString() + " )";
+	}
 }
