@@ -15,8 +15,9 @@ int suffix(char str[], char c){
 	int i = 0, j =0;
 
 	printf("\n");
-	//while (str[i] != '\0') // going over the whole string.
-	while (str [i] != '\n')
+	//while (str[i] != '\0')
+// going over the whole string.
+	while (str [i] != '\0')
 	{
 		if (str[i] == c)
 		{
