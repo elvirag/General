@@ -15,8 +15,7 @@ int suffix(char str[], char c){
 	int i = 0, j =0;
 
 	printf("\n");
-	//while (str[i] != '\0')
-// going over the whole string.
+
 	while (str [i] != '\0')
 	{
 		if (str[i] == c)
@@ -43,8 +42,9 @@ int main()
 	int count = 0;  //to keep track of how many chars have been used
 	char c; // to store the current char
 	char * str;
+
 	str = calloc(lenght, sizeof(char)); //suppose it's max of 100 chars.
-	 if ( str == NULL)
+	if ( str == NULL)
 		return  -1;
 	char seifabegining;
 
@@ -53,7 +53,8 @@ int main()
 	while(1)
 	{
 		printf("Please enter your string. 'Enter' signifies end of string.\n");
-		while((c = getchar()) != '\n'){ //keep reading until a newline
+		while((c = getchar()) != '\n')//keep reading until a newline
+		{
 			if(count >= lenght)
 			{
 				lenght += 10;
@@ -62,13 +63,17 @@ int main()
 
 			str[count++] = c;
 		}
-		if (str == '\0'){
+		if (str[0] == '\0'){ //checking if first char is end of string
+			printf("You have hit 'Enter'. Exiting the program...");
 			exit(-1);
 		}
 		printf("Please enter the letter you want your seifas to end with:\n");
-		scanf("%c", &seifabegining);
+		char newline; //this is the newline, we don't want it.
+		scanf("%c%c", &seifabegining, &newline);
+
 		printf("\nNumber of seifas found was: %d\n\n",suffix( str, seifabegining));
-		free(str);
+		str = calloc(lenght, sizeof(char));
+		count = 0;
 	}
 }
 
