@@ -1,9 +1,8 @@
-all: my_str
-FLAGS = -Wall  -g -pedantic -ansi
+FLAGS = -Wall -g -pedantic -ansi
 
-my_str:
+all:
 	gcc $(FLAGS)  my_str.c -o my_str
-	chmod +x my_str	
+	chmod +x my_str
 
 clean:
 	rm -f *.o 

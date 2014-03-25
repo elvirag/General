@@ -69,7 +69,7 @@ int main()
 		}
 		printf("Please enter the letter you want your seifas to end with:\n");
 		char newline; //this is the newline, we don't want it.
-		scanf("%c%c", &seifabegining, &newline);
+		if(scanf("%c%c", &seifabegining, &newline));//we don't need it and we don't want warninigs
 
 		printf("\nNumber of seifas found was: %d\n\n",suffix( str, seifabegining));
 		str = calloc(lenght, sizeof(char));
