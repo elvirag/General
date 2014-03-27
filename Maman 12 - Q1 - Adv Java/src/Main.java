@@ -1,51 +1,25 @@
 import java.util.ArrayList;
-import java.util.Random;
 
 
 public class Main {
 
-	private static final int MIN_SIZE = 5;
-	private static final int MAX_SIZE = 10;
-	
-
+	private static final int ARR_SIZE = 1000;
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		ArrayList<Expression> array = new ArrayList<Expression>();
-		Random rand = new Random();
-
-		int index = rand.nextInt(MAX_SIZE)+MIN_SIZE; //the number of elements in the Expression array
-
-		for (int i = 0; i < index ;  i++){
-
-			AtomicExpression atmExp = new AtomicExpression(rand.nextDouble()*20);
-			AtomicExpression atmExp1 = new AtomicExpression(rand.nextDouble()*20);
-			AdditionExpression addExp = new AdditionExpression(atmExp, atmExp1);
-			SubtractionExpression subExp = new SubtractionExpression(atmExp, addExp);
-			switch( i % 3){ //TODO get rid of magic numbers
-			case 0:
-				array.add(atmExp);
-				break;
-			case 1:
-				array.add(addExp);
-				break;
-			case 2:
-				array.add(subExp);
-				break;
-			default:
-				System.exit(0); // isn't going to happen
-			}
-
-		}		
-		//TODO remove the tests
-		array.add(array.get(2));
-		array.add(array.get(3));
+		Generator gen = new Generator();
 		
+		for (int i = 0 ; i < ARR_SIZE ; i++)
+			array.add(gen.generate());
+		
+		System.out.println("This array has " + ARR_SIZE + " elements.\nThe elements are:"); //printing a title for the array
 		for (int i = 0 ; i < array.size(); i++){
+			//System.out.println("array[" + i + "]: " + array.get(i).toString() + " = " + array.get(i).calculate()); //printing each element and it's result
 			for (int j = i+1 ; j < array.size(); j++){
-				if (array.get(i).equals(array.get(j)))
+				if (array.get(i).equals(array.get(j)))//checking if there is an equal element in the whole array. if so, printing it
 					System.out.print("array[" + i + "]: " + array.get(i).toString() + " is equal to array[" + j + "]: " + array.get(j).toString() + "\n");
 			}
 
