@@ -10,7 +10,7 @@
 
 #define MAX_CHARS 1024
 
-int main() //not sure if works, have to run in ubuntu
+int main()
 {
 	float dollar = 0.0, sums = 0.0;
 
