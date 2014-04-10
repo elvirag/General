@@ -1,7 +1,10 @@
-
+/**
+ * The first class that is not abstract.<br>
+ * It's a simple number of the double type.<br>
+ */
 public class AtomicExpression extends Expression {
 
-	private double _number; //atomic expression - the number
+	private double _number;
 	
 	/**
 	 * The constructor that initializes the expression
@@ -11,13 +14,21 @@ public class AtomicExpression extends Expression {
 		_number = number;
 	}
 	
+	
+	/**
+	 * Implementation of the calculation.
+	 * @return _number - a double
+	 */
 	@Override
 	public double calculate() {
 		return _number;
 	}
 	
+	
+	/**
+	 * The only toString that is implemented for the atomic expression
+	 */
 	public String toString(){
 		return String.valueOf(_number);
 	}
-
 }

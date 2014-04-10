@@ -16,13 +16,14 @@ import javax.swing.JPanel;
 public class MyPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private ArrayList<Integer> lineArray = new ArrayList<Integer>();// the array
-	// list that
-	// holds all
-	// the line
-	// numbers
-	private int NUM_DOTS = 10;
-	private int SPACE = 20;
+	private static final int TITLE_SIZE = 20;
+	private static final int NUM_DOTS = 10;
+	private static final int SPACE = 19;
+	private ArrayList<Integer> lineArray = new ArrayList<Integer>();// the array list that holds all the line numbers
+	
+	
+	
+	private JFrame frame;
 
 	public MyPanel() {
 		super();
@@ -37,10 +38,10 @@ public class MyPanel extends JPanel {
 	}
 
 	public void regFrame() {
-		JFrame frame = new JFrame("Testing");
+		frame = new JFrame("Testing");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(NUM_DOTS * SPACE, NUM_DOTS * SPACE);
-		frame.add(new MyPanel());
+		frame.setSize(NUM_DOTS * SPACE, NUM_DOTS * SPACE + TITLE_SIZE);
+		frame.add(this);
 		frame.setVisible(true);
 	}
 
@@ -55,11 +56,12 @@ public class MyPanel extends JPanel {
 			for (int j = 0; j <= NUM_DOTS * SPACE; j += SPACE) {
 				g2.draw(new Ellipse2D.Double(i, j, 1, 1));
 			}
+		
 		if (lineArray.size() > 1) {
 			for (int i = 1; i < lineArray.size(); i++) {
-				g2.drawLine(lineArray.get(i - 1) / 10,
-						lineArray.get(i - 1) % 10, lineArray.get(i) / 10,
-						lineArray.get(i) % 10);
+				g2.drawLine(lineArray.get(i - 1)/10 * SPACE,
+						lineArray.get(i - 1) % 10 *SPACE, lineArray.get(i) / 10 * SPACE,
+						lineArray.get(i) % 10 * SPACE);
 			}
 		}
 
@@ -69,7 +71,8 @@ public class MyPanel extends JPanel {
 		if (input >= 0 && input <= 99)
 		{
 			lineArray.add(input);
-			repaint();
+				//frame.repaint();
+				repaint();
 		}
 		else{
 			JOptionPane.showMessageDialog(null,
@@ -85,7 +88,7 @@ public class MyPanel extends JPanel {
 
 		try
 		{
-			Integer.parseInt(str);
+			integer = Integer.parseInt(str);
 		}
 		catch(NumberFormatException nme)
 		{

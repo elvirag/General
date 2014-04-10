@@ -1,5 +1,8 @@
 import java.util.Random;
-
+/**
+ * The class that generates all the expressions.<br>
+ * The way how is explained inside class.
+ */
 public class Generator {
 
 	private static final int EXP_TYPES = 10; //All types of expressions
@@ -7,7 +10,8 @@ public class Generator {
 
 	/**
 	 * In this function I generate all different kinds of expressions.<br>
-	 * Because for an expression that is comprised of two more complex expressions there are 8 possibilities, I will cover them here by this order:<br><br>
+	 * Because for an expression that constitutes of two more complex expressions<br>
+	 * there are 8 (2^3) possibilities, I will cover them here by this order:<br><br>
 	 * case 3: +++<br>
 	 * case 4: ++-<br>
 	 * case 5: +--<br>
@@ -24,10 +28,10 @@ public class Generator {
 			//new regular atomic expression
 			return new AtomicExpression(rand.nextDouble()*20);
 		case 1:
-			//new addition expression: 5 + 3
+			//new addition expression i.e. 5 + 3
 			return new AdditionExpression(new AtomicExpression(rand.nextDouble()*20), new AtomicExpression(rand.nextDouble()*20));
 		case 2:
-			//new subtraction expression 5 - 3
+			//new subtraction expression i.e. 5 - 3
 			return new SubtractionExpression(new AtomicExpression(rand.nextDouble()*20), new AtomicExpression(rand.nextDouble()*20));
 		case 3:
 			return new AdditionExpression(new AdditionExpression(new AtomicExpression(rand.nextDouble()*20), new AtomicExpression(rand.nextDouble()*20)), new AdditionExpression(new AtomicExpression(rand.nextDouble()*20), new AtomicExpression(rand.nextDouble()*20)));
