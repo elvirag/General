@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.cdt.ui.CElementWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1397449115671_3" label="MATAM" name="MATAM">
+<item factoryID="org.eclipse.cdt.ui.PersistableCElementFactory" path="/Maman 11 - Q1 - C" type="4"/>
+<item factoryID="org.eclipse.cdt.ui.PersistableCElementFactory" path="/Maman 11 - Q2 - C" type="4"/>
+<item factoryID="org.eclipse.cdt.ui.PersistableCElementFactory" path="/Maman 21 - C" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1397449341090_7" label="Adv Java" name="Adv Java">
+<item elementID="=Maman 13 - Q2 - Adv Java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Maman 11 - Q2 - Adv Java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Maman 13 - Q1 - Adv Java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Maman 11 - Q1 - Adv Java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Maman 12 - Q1 - Adv Java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Maman 12 - Q2 - Adv Java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1397448521921_0" label="Window Working Set" name="Aggregate for window 1397448521920"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1397449118725_4" label="Multiple Working Sets" name="Aggregate:Adv Java:MATAM:">
+<workingSet IMemento.internal.id="MATAM"/>
+</workingSet>
+<mruList name="MATAM"/>
+</workingSetManager>
