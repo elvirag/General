@@ -20,9 +20,8 @@ public class RobotsWorld {
 	}
 
 	public Point moveRobot(Point p) {
-
 		Point temp = new Point(p);
-
+		
 		if (getRobot(p) != null) {
 			switch (getRobot(p).getDirectRobot()) {
 			case UP:
@@ -39,25 +38,46 @@ public class RobotsWorld {
 				_robotWorld[p.x][p.y] = null;
 				return temp;
 			}
-
 		}
 		return null;
-
 	}
 
-	public boolean turnRobotRight(Point p) {
-		return false;
 
+	public boolean turnRobotRight(Point p) {
+		if (getRobot(p) != null) {
+			switch (getRobot(p).getDirectRobot()) {
+			case UP:
+				getRobot(p).setDirectRobot(Direction.RIGHT);
+			case DOWN:
+				getRobot(p).setDirectRobot(Direction.LEFT);
+			case RIGHT:
+				getRobot(p).setDirectRobot(Direction.DOWN);
+			case LEFT:
+				getRobot(p).setDirectRobot(Direction.UP);
+			}
+		}
+		return false;
 	}
 
 	public boolean turnRobotLeft(Point p) {
-		
+		if (getRobot(p) != null) {
+			switch (getRobot(p).getDirectRobot()) {
+			case UP:
+				getRobot(p).setDirectRobot(Direction.LEFT);
+			case DOWN:
+				getRobot(p).setDirectRobot(Direction.RIGHT);
+			case RIGHT:
+				getRobot(p).setDirectRobot(Direction.UP);
+			case LEFT:
+				getRobot(p).setDirectRobot(Direction.DOWN);
+			}
+		}
 		return false;
 	}
 
 	public Robot removeRobot(Point p) {
 		Robot temp = getRobot(p);
-		if (getRobot(p) != null) {
+		if (temp != null) {
 			_robotWorld[p.x][p.y] = null;
 			return temp;
 		}
@@ -68,7 +88,7 @@ public class RobotsWorld {
 		if ( p.x < _width && p.y < _height)
 			if(_robotWorld[p.x][p.y] != null)
 				return _robotWorld[p.x][p.y];
-		
+
 		return null;
 	}
 

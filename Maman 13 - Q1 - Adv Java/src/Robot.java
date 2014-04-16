@@ -42,7 +42,7 @@ public class Robot {
 	}
 	
 	// GETTERS
-	public int get_idRobot() {
+	public int getIdRobot() {
 		return _idRobot;
 	}
 
@@ -50,7 +50,7 @@ public class Robot {
 		return _directRobot;
 	}
 	// SETTERS
-	private void setDirectRobot(Direction directRobot) {
+	public void setDirectRobot(Direction directRobot) {
 		_directRobot = directRobot;
 	}
 
