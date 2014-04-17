@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define N 3 /*Defining the dimension of the magic square*/
+#define N 2 /*Defining the dimension of the magic square*/
 
 typedef enum {
 	FALSE = 0, TRUE = 1
@@ -16,21 +16,11 @@ typedef enum {
 
 /*All my functions declarations*/
 int * input(); /*The function that gets the input*/
+boolean check_input(int * magic); /*The function that gets the input*/
 void print(int * magic); /*The function that prints*/
 boolean test_cube(int * magic); /*The function that tests the magic!*/
 
-/*
- * Printing the matrix
- * */
-void print(int * magic) {
-	int row, col;
 
-	for (row = 0; row < N; row++) {
-		for (col = 0; col < N; col++)
-			printf("%6d", *(magic + row * N + col));
-		printf("\n");
-	}
-}
 
 /*Scanning the input*/
 int * input() {
@@ -63,6 +53,37 @@ int * input() {
 
 	return magic;
 }
+
+boolean check_input(int * magic){
+	int row, col;
+	boolean * check_array = calloc(N * N, sizeof(int)); /*Initializing the array with zeroes*/;
+
+	for (row = 0; row < N; row++)
+		for (col = 0; col < N; col++){
+			if( 0 <= *(magic + row * N + col) || *(magic + row * N + col) > N*N){
+				printf("%d is not in the range specified", *(magic + row * N + col));
+				return FALSE;
+			}
+			else check_array[col][row] = TRUE;
+			printf("check_array[%d][%d]%d",col,row,check_array[col][row]);
+		}
+	return FALSE;
+}
+
+
+/*
+ * Printing the matrix
+ * */
+void print(int * magic) {
+	int row, col;
+
+	for (row = 0; row < N; row++) {
+		for (col = 0; col < N; col++)
+			printf("%6d", *(magic + row * N + col));
+		printf("\n");
+	}
+}
+
 
 /*Well, I can test the sums of the rows and columns right after one run of the for loop,
  * but the diagonals require to run all over the matrix first.*/
@@ -98,7 +119,7 @@ int main() {
 	do {
 		print(p = input());
 
-		if (test_cube(p))
+		if ((check_input(p)) && test_cube(p) )
 			printf("\nThis cube is indeed magic!!!\n\n");
 		else
 			printf("\nThis cube is NOT magic!!!\n\n");
