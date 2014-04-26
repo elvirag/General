@@ -60,7 +60,7 @@ int * input() {
 	if (member != N * N){
 		printf(
 				/*Not supposed to get here. If I have all the length of legal characters within the range and no thing repeats, this is not logical that this sequence may exist!*/
-				"Some of the numbers in the sequence needed (1 - N^2) are missing.\nThe program will now exit.\n");
+				"Some of the numbers in the sequence needed (1 - N^2) are missing.\n");
 		prog_exit();
 		return NULL;
 	}
