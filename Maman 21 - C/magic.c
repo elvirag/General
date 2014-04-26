@@ -50,24 +50,41 @@ int * input() {
 				"You have inputed too few parameters.\nThe program will now quit.\n");
 		exit(0);
 	}
-
-	return magic;
+	if (check_input(magic))
+		return magic;
+	else{ /*Not supposed t even get here.*/
+		printf("\nSorry, the input is wrong.\nThe program will now quit");
+		exit(0);
+	}
 }
 
 boolean check_input(int * magic){
-	int row, col;
+	int row, col, member = 0;
 	boolean * check_array = calloc(N * N, sizeof(int)); /*Initializing the array with zeroes*/;
 
 	for (row = 0; row < N; row++)
 		for (col = 0; col < N; col++){
-			if( 0 <= *(magic + row * N + col) || *(magic + row * N + col) > N*N){
+			if( 0 >= *(magic + row * N + col) || *(magic + row * N + col) > N*N){
 				printf("%d is not in the range specified", *(magic + row * N + col));
 				return FALSE;
 			}
-			else check_array[col][row] = TRUE;
-			printf("check_array[%d][%d]%d",col,row,check_array[col][row]);
+			else if (*(check_array + *(magic + row * N + col) -1) == TRUE){
+				printf("\nThis member (%d) already exists in the cube,\nPlease don't repeat numbers in the magic cube!\n\nThe program will now quit.\n",*(magic + row * N + col));
+				exit(0);
+			}
+			else *(check_array + *(magic + row * N + col) -1) = TRUE;
+			member++;
+			printf("\ncheck_array[%d]=%d\n",*(magic + row * N + col) -1,*(check_array + row * N + col));
 		}
-	return FALSE;
+	if (member == N*N){
+		printf("member = %d",member);/*TODO remove*/
+		return TRUE;
+	}
+	else
+	{
+		printf("Some of the numbers in the sequence needed (1 - N^2) are missing.\nThe program will now exit.\n");
+		exit(0);
+	}
 }
 
 
@@ -119,7 +136,7 @@ int main() {
 	do {
 		print(p = input());
 
-		if ((check_input(p)) && test_cube(p) )
+		if (test_cube(p) )
 			printf("\nThis cube is indeed magic!!!\n\n");
 		else
 			printf("\nThis cube is NOT magic!!!\n\n");
