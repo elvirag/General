@@ -1,8 +1,8 @@
 
 public class SortedPair<T extends Comparable<T>>{
 
-	private T _element1 = null;
-	private T _element2 = null;
+	private T _element1;
+	private T _element2;
 
 	public SortedPair(T element1, T element2) throws IllegalPair{
 		int result = 0;
@@ -18,8 +18,11 @@ public class SortedPair<T extends Comparable<T>>{
 			_element2 = element1;
 		}
 		else
-		{
-		//TODO
+			try{
+				throw new IllegalPair();
+			}
+		catch(IllegalPair ip){
+			throw new IllegalPair();
 		}
 	}
 
@@ -33,7 +36,7 @@ public class SortedPair<T extends Comparable<T>>{
 
 	@Override
 	public String toString(){
-		return "< " + _element1.toString() + ", " + _element2.toString() + " >";
+		return "< " + _element1 + ", " + _element2 + " >";
 	}
 
 }
