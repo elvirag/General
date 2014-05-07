@@ -1,3 +1,4 @@
+package UIPack;
 import java.awt.FlowLayout;
 import java.awt.GraphicsConfiguration;
 
@@ -46,8 +47,6 @@ public class UI extends JFrame{
 		
 		_textArea =  new JTextArea(text, TEXT_WIDTH, TEXT_LENGHT);
 		add(_textArea);
-		
-		
 		
 		
 	}
