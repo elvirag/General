@@ -1,8 +1,9 @@
+package KeyBoard;
 import java.util.HashMap;
 import java.util.Map;
 
 
-public class KeyBoardHash {
+class KeyBoardHash {
 
 	Map<Integer, String> _keyhash = new HashMap<Integer, String>();
 
