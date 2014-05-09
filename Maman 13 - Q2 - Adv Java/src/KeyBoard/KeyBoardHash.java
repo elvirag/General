@@ -3,9 +3,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-class KeyBoardHash {
+public class KeyBoardHash {
 
-	Map<Integer, String> _keyhash = new HashMap<Integer, String>();
+	protected Map<Integer, String> _keyhash = new HashMap<Integer, String>();
 
 	public KeyBoardHash() {
 		_keyhash.put(192,"~");

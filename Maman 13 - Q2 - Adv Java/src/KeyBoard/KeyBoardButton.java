@@ -12,47 +12,51 @@ public class KeyBoardButton extends JButton implements KeyListener{
 	 * 
 	 */
 	private static final long serialVersionUID = -2067880388944921967L;
-	private static Integer _keyValue;
-	private static String _keyView;
-	private Color _background = Color.RED;
+	private Integer _keyValue;
+	private  String _keyView;
+	private Color _background = this.getBackground();
 	private Color _changedBackground = Color.YELLOW;
-	
+	private KeyBoardHash _keyHash;
 	
 	
 	public KeyBoardButton(Integer keyValue){
-		super(setKeyView(setKeyValue(keyValue)));
-		this.setBackground(_background);
+		super();
+		_keyHash = new KeyBoardHash();
+		setKeyValue(keyValue);
+		setKeyView(keyValue);
+		setText(_keyView);
+		setBackground(_background);
 		System.out.println("\nKey value of Button: " + getKeyValue() + "\nKey view of Button:" + getKeyView());
-		this.setToolTipText(_keyView);
-		this.addKeyListener(this);
+		setToolTipText(_keyView);
+		addKeyListener(this);
 		
 	}
 
-	private static String getKeyView() {
+	private String getKeyView() {
 		return _keyView;
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		System.out.println("The key was printed!!!");
-		if (e.getKeyCode() == _keyValue)
-			this.setBackground(_changedBackground);		
+		System.out.printf("\nKey Code pressed: %d  Key Value: %d Key View: %s", e.getKeyCode(), _keyValue, _keyValue);
+		if (e.getKeyCode() == _keyValue){
+			setBackground(_changedBackground);
+		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode() == _keyValue)
-			this.setBackground(_background);	
+		System.out.printf("\nKey Code released: %d  Key Value: %d", e.getKeyCode(), _keyValue);
+		if (e.getKeyCode() == _keyValue){
+			setBackground(_background);
+		}	
 	}
 
 	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void keyTyped(KeyEvent e) {/*does nothing TODO*/}
 
-	private static Integer setKeyValue(Integer keyValue) {
-		if (new KeyBoardHash()._keyhash.containsKey(keyValue)){
+	private Integer setKeyValue(Integer keyValue) {
+		if (_keyHash._keyhash.containsKey(keyValue)){
 			_keyValue = keyValue;
 			return _keyValue;
 		}
@@ -62,9 +66,9 @@ public class KeyBoardButton extends JButton implements KeyListener{
 		}
 	}
 	
-	private static String setKeyView(Integer keyValue) {
-		if (new KeyBoardHash()._keyhash.containsKey(keyValue)){
-			_keyView = new KeyBoardHash()._keyhash.get(_keyValue);
+	private String setKeyView(Integer keyValue) {
+		if (_keyHash._keyhash.containsKey(keyValue)){
+			_keyView = _keyHash._keyhash.get(_keyValue);
 			return _keyView;
 		}
 		else System.out.println("There is no such String\n"); //not supposed to happen, I type my own buttons.
