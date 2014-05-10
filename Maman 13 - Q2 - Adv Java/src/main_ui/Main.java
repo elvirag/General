@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 
 public class Main {
 
-	final public static int FRAME_WIDTH = 600;
+	final public static int FRAME_WIDTH = 740;
 	final public static int FRAME_HEIGHT = 400;
 
 	/**

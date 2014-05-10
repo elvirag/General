@@ -15,8 +15,8 @@ public class TextArea extends JTextArea implements KeyListener{
 	 * 
 	 */
 	private static final long serialVersionUID = -6834033763543676790L;
-	private static final int BORDER = 40;
-	private static final int KEYBOARD_SIZE = 100;
+	private static final int BORDER = 100;
+	private static final int KEYBOARD_SIZE = 230;
 
 	private KeyBoardHash _keyHash;
 

@@ -1,4 +1,5 @@
 package main_ui;
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
@@ -16,7 +17,7 @@ public class UI extends JPanel{
 	
 	TextArea _textArea;
 	KeyBoardPanel _keyBoardPanel;
-	FlowLayout _layout = new FlowLayout(FlowLayout.CENTER,0,0);
+	BorderLayout _layout = new BorderLayout();
 	
 	public UI(){
 		super();
@@ -33,11 +34,11 @@ public class UI extends JPanel{
 	}
 
 	private void addTextArea() {
-		this.add(_textArea);
+		this.add(_textArea, BorderLayout.NORTH);
 	}
 
 	private void addKeyBoardPanel(){
-		this.add(_keyBoardPanel);
+		this.add(_keyBoardPanel, BorderLayout.SOUTH);
 	}
 
 }

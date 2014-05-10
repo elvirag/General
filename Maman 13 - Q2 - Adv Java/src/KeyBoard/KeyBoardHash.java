@@ -65,7 +65,7 @@ public class KeyBoardHash {
 		_keyhash.put(47,"?");
 		_keyhash.put(38,"^");
 		
-		_keyhash.put(32,"                                      ");
+		_keyhash.put(32,"                                                             ");
 		_keyhash.put(37,",");
 		_keyhash.put(40,"<");
 		_keyhash.put(39,"v");
