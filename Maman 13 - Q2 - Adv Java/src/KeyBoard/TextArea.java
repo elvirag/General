@@ -1,24 +1,55 @@
 package KeyBoard;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JTextArea;
 
-public class TextArea extends JTextArea{
+import main_ui.Main;
+
+public class TextArea extends JTextArea implements KeyListener{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -6834033763543676790L;
-	JTextArea _textArea;
+	private static final int BORDER = 40;
+	private static final int KEYBOARD_SIZE = 100;
+
+	private KeyBoardHash _keyHash;
+
 	public TextArea() {
-		System.out.println("Inside of TextArea constructor!");
 		init();
 	}
 
 	private void init(){
-		_textArea = new JTextArea();
-		_textArea.setBackground(Color.LIGHT_GRAY);
-		_textArea.setToolTipText("Type here and the keys will change color accordingly."); //TODO
+		this.setPreferredSize(new Dimension(Main.FRAME_WIDTH - BORDER, Main.FRAME_HEIGHT - KEYBOARD_SIZE));
+		this.setBackground(Color.LIGHT_GRAY);
+		this.setToolTipText("Type here and the keys will change color accordingly."); //TODO
+		addKeyListener(this);
+		_keyHash = new KeyBoardHash();
 	}
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			for (KeyBoardButton button : KeyBoardButton._keyBoardButtons)
+				if (_keyHash._keyhash.containsKey(e.getKeyCode()) && _keyHash.getString(e.getKeyCode()).equals(button.getKeyView())){
+					button.setDifferentBackground();
+			}
+		}
+	
+		@Override
+		public void keyReleased(KeyEvent e) {
+			for (KeyBoardButton button : KeyBoardButton._keyBoardButtons)
+				if (_keyHash._keyhash.containsKey(e.getKeyCode()) && _keyHash.getString(e.getKeyCode()).equals(button.getKeyView())){
+					button.setBackground();
+			}
+		}
+
+
+	@Override
+	public void keyTyped(KeyEvent e) {/*does nothing TODO*/}
+
 }

@@ -76,5 +76,9 @@ public class KeyBoardHash {
 		return _keyhash.size();
 	}
 	
+	public String getString(Integer code){
+		return _keyhash.get(code);
+	}
+	
 	
 }

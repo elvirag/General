@@ -1,4 +1,6 @@
-import javax.swing.JFrame;
+package main_ui;
+import java.awt.FlowLayout;
+
 import javax.swing.JPanel;
 
 import KeyBoard.KeyBoardPanel;
@@ -11,24 +13,31 @@ public class UI extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 6626591741620618093L;
-	JPanel _mainPanel = new JPanel();
+	
+	TextArea _textArea;
+	KeyBoardPanel _keyBoardPanel;
+	FlowLayout _layout = new FlowLayout(FlowLayout.CENTER,0,0);
 	
 	public UI(){
-		System.out.println("Inside of UI constructor!");
+		super();
+		_textArea = new TextArea();
+		_keyBoardPanel = new KeyBoardPanel();
 		init();
 	}
 
 	public void init(){
+		this.setLayout(_layout);
 		addTextArea();
 		addKeyBoardPanel();
+		this.setVisible(true);
 	}
 
 	private void addTextArea() {
-		_mainPanel.add(new TextArea());
+		this.add(_textArea);
 	}
 
 	private void addKeyBoardPanel(){
-		_mainPanel.add(new KeyBoardPanel());
+		this.add(_keyBoardPanel);
 	}
 
 }
