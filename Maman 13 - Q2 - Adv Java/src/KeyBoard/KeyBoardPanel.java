@@ -23,6 +23,8 @@ public class KeyBoardPanel extends JPanel{
 	JPanel _keyBoardPanel = new JPanel();
 	
 	public KeyBoardPanel() {
+		
+		System.out.println("Inside of KeyBoardPanel constructor!");
 		_line1 = new JPanel(_leftFlow);
 		_line2 = new JPanel(_leftFlow);
 		_line3 = new JPanel(_leftFlow);

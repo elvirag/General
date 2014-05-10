@@ -1,3 +1,5 @@
+import java.awt.FlowLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -90,8 +92,12 @@ public class UI extends JPanel {
 	public void regFrame() {
 		frame = new JFrame("Robot's World");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLayout(new FlowLayout());
 		frame.setSize(get_Height(), get_Width()); // TODO
-		frame.add(this);
+		for (int i = 0; i < get_Height()/ROBOT_SIZE; i++)
+			for (int j = 0; j< get_Width()/ROBOT_SIZE; j++)
+				frame.add(new Robutton());
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
 

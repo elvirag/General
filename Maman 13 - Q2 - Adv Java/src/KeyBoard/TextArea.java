@@ -12,6 +12,7 @@ public class TextArea extends JTextArea{
 	private static final long serialVersionUID = -6834033763543676790L;
 	JTextArea _textArea;
 	public TextArea() {
+		System.out.println("Inside of TextArea constructor!");
 		init();
 	}
 

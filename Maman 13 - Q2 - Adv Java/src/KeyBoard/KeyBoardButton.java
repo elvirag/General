@@ -21,6 +21,7 @@ public class KeyBoardButton extends JButton implements KeyListener{
 	
 	public KeyBoardButton(Integer keyValue){
 		super();
+		System.out.println("Inside of KeyBoardButton constructor!");
 		_keyHash = new KeyBoardHash();
 		setKeyValue(keyValue);
 		setKeyView(keyValue);

@@ -12,10 +12,13 @@ public class UI extends JPanel{
 	 */
 	private static final long serialVersionUID = 6626591741620618093L;
 	JPanel _mainPanel = new JPanel();
+	
+	public UI(){
+		System.out.println("Inside of UI constructor!");
+		init();
+	}
 
 	public void init(){
-		
-		add(_mainPanel);
 		addTextArea();
 		addKeyBoardPanel();
 	}

@@ -14,15 +14,16 @@ public class Main {
 		final int FRAME_HEIGHT = 400;
 		
 		JFrame frame = new JFrame("Blind Typing Keyboard");
-		FlowLayout _layout = new FlowLayout();
-		
-		frame.setLayout(_layout);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
 		frame.setLocationRelativeTo(null); // centered frame
+		
+		FlowLayout _layout = new FlowLayout();
+		frame.setLayout(_layout);
+		
+		//UI ui = new UI();
+		//frame.add(ui);
 		frame.setVisible(true);
-		UI ui = new UI();
-		frame.add(ui);
 	}
 
 }
