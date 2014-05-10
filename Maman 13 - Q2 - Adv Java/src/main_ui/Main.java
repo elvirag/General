@@ -15,7 +15,6 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 
-
 		JFrame frame = new JFrame("Blind Typing Keyboard");
 
 
@@ -24,7 +23,7 @@ public class Main {
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-		//frame.setResizable(false); //TODO
+		frame.setResizable(false);
 		frame.setLocationRelativeTo(null); // centered frame
 		
 		UI ui = new UI();
