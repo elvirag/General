@@ -11,13 +11,12 @@ public class Main {
 	 * @param args
 	 */
 
-	private static final Integer WIDTH_FACTOR = 300;
-	private static final Integer HEIGHT_FACTOR = 350;
 	private static Integer _width;
 	private static Integer _height;
+	public static final Integer ROBOT_SIZE = 35;
+	private static final double FRAME_HEIGHT = 20;
 	private static Integer MAX_SIZE = 10;
 	private static Integer DEF_SIZE = 1;
-	public static final Integer ROBOT_SIZE = 70;
 	
 	
 	public static void init() {
@@ -85,17 +84,18 @@ public class Main {
 	}
 
 
-
-
-
 	public static void main(String[] args) {
 		
 		init();
 		
 		JFrame frame = new JFrame("Robot's World");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLayout(new FlowLayout());
-		frame.setSize(get_Width() - WIDTH_FACTOR, get_Height() - HEIGHT_FACTOR); // TODO
+		frame.setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
+		
+		double WIDTH_FACTOR = (_width ) * 0.05;
+		double HEIGHT_FACTOR = (_height) * 0.15 + FRAME_HEIGHT;
+		
+		frame.setSize(get_Width() + (int) WIDTH_FACTOR, get_Height() + (int) HEIGHT_FACTOR); //TODO
 		frame.add(new TotalPanel());
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);

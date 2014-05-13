@@ -26,5 +26,7 @@ public class ActionsPanel extends JPanel {
 		this.add(right);
 		this.add(left);
 		this.add(delete);
+		
+		
 	}
 }

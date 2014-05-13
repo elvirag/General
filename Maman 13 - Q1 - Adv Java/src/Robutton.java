@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -17,8 +18,8 @@ public class Robutton extends JButton implements MouseListener{
 	Robot _robot = null;
 
 	public Robutton() {
-		super(" ");
-		this.setSize(Main.ROBOT_SIZE, Main.ROBOT_SIZE);
+		super();
+		this.setPreferredSize(new Dimension(Main.ROBOT_SIZE, Main.ROBOT_SIZE));
 		addMouseListener(this);
 	}
 	@Override
