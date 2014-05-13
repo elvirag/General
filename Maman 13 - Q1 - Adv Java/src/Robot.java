@@ -1,4 +1,7 @@
 
+
+
+
 public class Robot {
 
 	private int _idRobot;
