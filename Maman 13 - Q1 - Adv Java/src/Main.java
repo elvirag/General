@@ -13,7 +13,7 @@ public class Main {
 
 	private static Integer _width;
 	private static Integer _height;
-	public static final Integer ROBOT_SIZE = 35;
+	public static final Integer ROBOT_SIZE = 50;
 	private static final Integer MIN_WIDTH = 354; // the size of the buttons doesn't change so I fixed the minimum width
 	private static final Integer MIN_HEIGHT = 107;
 	private static final Integer BUTTON_WIDTH = 354;
@@ -49,6 +49,10 @@ public class Main {
 
 		} while (get_Height() == null || get_Width() == null);
 
+	}
+	
+	void initRobotWorld(){
+		
 	}
 
 	static Integer get_Width() {

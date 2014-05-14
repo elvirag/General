@@ -24,75 +24,54 @@ public class Robutton extends JButton implements MouseListener{
 	}
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
+
 		if (_robot == null){
-			String direcString = JOptionPane.showInputDialog("Please input direction of robot: (Up, Down, Right or Left only)");
+
 			Direction direct = null;
-			if (direcString.equals("Up"))
-				direct = Direction.UP;
-			if (direcString.equals("Down"))
-				direct = Direction.DOWN;
-			if (direcString.equals("Right"))
-				direct = Direction.RIGHT;
-			if (direcString.equals("Left"))
-				direct = Direction.LEFT;
-			else
-				try {
-					throw new Direxception();
-				} catch (Direxception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			System.out.println("\nThe robot direction is: " + direcString);
-			_robot = new Robot(direct);
-		}
-		else{
-			setBackground(Color.PINK);
-		}
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		if (_robot == null){
-			String direcString = JOptionPane.showInputDialog("Please input direction of robot: (Up, Down, Right or Left only)");
-			System.out.println("\nThe robot direction is: " + direcString);
-			Direction direct = null;
+			String direcString = null;
 			do {
-				try {
-					if (direcString.equals("Up")){
-						direct = Direction.UP;
-						System.out.println("\nThe robot real direction is: " + direct);
-					}
-					if (direcString.equals("Down"))
-						direct = Direction.DOWN;
-					if (direcString.equals("Right"))
-						direct = Direction.RIGHT;
-					if (direcString.equals("Left"))
-						direct = Direction.LEFT;
-					else
-						throw new Direxception();
-				} catch (Direxception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				direcString = JOptionPane.showInputDialog("Please input direction of robot: (Up, Down, Right or Left only)");
+				switch(direcString){
+				case "up":
+					direct = Direction.UP;
+					break;
+				case "down":
+					direct = Direction.DOWN;
+					break;
+				case "right":
+					direct = Direction.RIGHT;
+					break;
+				case "left":
+					direct = Direction.LEFT;
+					break;
+				default:
+					setBackground(Color.RED);
 				}
-			}while(direct == null);
+			}
+			while (direct == null);
+
 			_robot = new Robot(direct);
+			if (WorldPanel._robotsWorld.addRobot(_robot, getLocation()))
+				this.setText(_robot.toString());
+			System.out.println("Location of robot is: " + getLocation());
 		}
 		else{
-			setBackground(Color.PINK);
+			this.setBackground(Color.PINK);
+			_robot.getIdRobot();
+			
 		}
 	}
+
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {}
+
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub

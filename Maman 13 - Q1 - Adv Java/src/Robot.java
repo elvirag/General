@@ -70,12 +70,16 @@ public class Robot {
 		switch(_directRobot){
 		case UP:
 			arrow = "^";
+			break;
 		case DOWN:
 			arrow = "v";
+			break;
 		case RIGHT:
 			arrow = ">";
+			break;
 		case LEFT:
 			arrow = "<";
+			break;
 		}
 		return _idRobot + arrow;
 
