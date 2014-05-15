@@ -58,7 +58,7 @@ public class Robutton extends JButton implements MouseListener{
 		else{
 			this.setBackground(Color.PINK);
 			_robot.getIdRobot();
-			
+
 		}
 	}
 

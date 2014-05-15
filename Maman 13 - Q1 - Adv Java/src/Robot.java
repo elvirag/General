@@ -41,11 +41,11 @@ public class Robot {
 	}
 	@Override
 	public void finalize(){
-		//TODO
+
 	}
-	
+
 	// GETTERS
-	public int getIdRobot() {
+	public Integer getIdRobot() {
 		return _idRobot;
 	}
 
@@ -58,8 +58,7 @@ public class Robot {
 	}
 
 	private void setID() {
-		int ID = 0;
-		// TODO 
+		Integer ID = RobotArray.getID(); 
 		_idRobot = ID;
 	}
 

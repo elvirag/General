@@ -16,12 +16,11 @@ public class Main {
 	public static final Integer ROBOT_SIZE = 50;
 	private static final Integer MIN_WIDTH = 354; // the size of the buttons doesn't change so I fixed the minimum width
 	private static final Integer MIN_HEIGHT = 107;
-	private static final Integer BUTTON_WIDTH = 354;
 	private static final Integer BUTTON_HEIGHT = 50;
 	private static Integer MAX_SIZE = 10;
 	private static Integer DEF_SIZE = 1;
-	
-	
+
+
 	public static void init() {
 		do {
 			try {
@@ -50,9 +49,9 @@ public class Main {
 		} while (get_Height() == null || get_Width() == null);
 
 	}
-	
+
 	void initRobotWorld(){
-		
+
 	}
 
 	static Integer get_Width() {
@@ -92,13 +91,13 @@ public class Main {
 
 
 	public static void main(String[] args) {
-		
+
 		init();
-		
+
 		JFrame frame = new JFrame("Robot's World");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
-			
+
 		Integer frameWidth = get_Width();
 		Integer frameHeight = get_Height() + BUTTON_HEIGHT;
 		frame.setSize( frameWidth  > MIN_WIDTH ? frameWidth : MIN_WIDTH ,

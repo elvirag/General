@@ -8,7 +8,7 @@ public class RobotsWorld {
 	private int _height;
 	private Robot[][] _robotWorld;
 
-	public RobotsWorld(int width, int height) {
+	public RobotsWorld(Integer width, Integer height) {
 		_robotWorld = new Robot[setWidth(width)][setHeight(height)];
 	}
 
@@ -22,7 +22,7 @@ public class RobotsWorld {
 
 	public Point moveRobot(Point p) {
 		Point temp = new Point(p);
-		
+
 		if (getRobot(p) != null) {
 			switch (getRobot(p).getDirectRobot()) {
 			case UP:
@@ -79,6 +79,7 @@ public class RobotsWorld {
 	public Robot removeRobot(Point p) {
 		Robot temp = getRobot(p);
 		if (temp != null) {
+			RobotArray.FreeID(temp); //freeing the ID so other Robots can use it
 			_robotWorld[p.x][p.y] = null;
 			return temp;
 		}
