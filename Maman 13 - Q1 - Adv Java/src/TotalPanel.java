@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 
 public class TotalPanel extends JPanel {
 
-
+	
 	/**
 	 * 
 	 */
@@ -19,6 +19,6 @@ public class TotalPanel extends JPanel {
 		this.add(new ActionsPanel(),BorderLayout.SOUTH);
 	}
 
-
+	
 
 }

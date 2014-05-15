@@ -7,6 +7,7 @@ public class RobotArray{
 
 	public RobotArray(){
 		_roboarray = new Robot[Main.get_Width() * Main.get_Height()];
+		System.out.println(_roboarray);
 		_minID = 0;
 	}
 
@@ -19,7 +20,6 @@ public class RobotArray{
 				_minID = i;
 				break;
 			}
-
 		}
 		return _minID;
 	}
