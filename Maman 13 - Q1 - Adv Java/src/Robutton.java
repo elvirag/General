@@ -51,8 +51,9 @@ public class Robutton extends JButton implements MouseListener{
 			while (direct == null);
 
 			_robot = new Robot(direct);
-			if (WorldPanel._robotsWorld.addRobot(_robot, getLocation()))
+			if (WorldPanel._robotsWorld.addRobot(_robot, getLocation())){ //there is an issue with this if, its almost always false for some reason...
 				this.setText(_robot.toString());
+			}
 			System.out.println("Location of robot is: " + getLocation());
 		}
 		else{

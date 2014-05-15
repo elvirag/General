@@ -16,8 +16,9 @@ public class RobotsWorld {
 		if (getRobot(p) == null && p.x < _width && p.y < _height) {
 			_robotWorld[p.x][p.y] = r;
 			return true;
-		} else
+		} else {
 			return false;
+		}
 	}
 
 	public Point moveRobot(Point p) {
@@ -33,6 +34,9 @@ public class RobotsWorld {
 				temp.x++;
 			case LEFT:
 				temp.x--;
+			}
+			if (temp.x < 0 || temp.y < 0 || temp.x > _width || temp.y > _height) { // should check if we are out of bounds, the get robot will give a false positive otherwise :)
+				return null;
 			}
 			if (getRobot(temp) == null) {
 				_robotWorld[temp.x][temp.y] = getRobot(p);
@@ -87,7 +91,7 @@ public class RobotsWorld {
 	}
 
 	public Robot getRobot(Point p) {
-		if ( p.x < _width && p.y < _height)
+		if ( p.x < _width && p.y < _height && p.x >= 0 && p.y >= 0 )
 			if(_robotWorld[p.x][p.y] != null)
 				return _robotWorld[p.x][p.y];
 

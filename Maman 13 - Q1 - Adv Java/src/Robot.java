@@ -4,7 +4,7 @@
 
 public class Robot {
 
-	private int _idRobot;
+	private Integer _idRobot;
 	private Direction _directRobot;
 
 	public Robot(Direction direction){
@@ -16,26 +16,26 @@ public class Robot {
 	public void turnLeft(){
 		switch(_directRobot){
 		case UP:
-			_directRobot = Direction.LEFT;
+			setDirectRobot(Direction.LEFT);
 		case DOWN:
-			_directRobot = Direction.RIGHT;
+			setDirectRobot(Direction.RIGHT);
 		case RIGHT:
-			_directRobot = Direction.UP;
+			setDirectRobot(Direction.UP);
 		case LEFT:
-			_directRobot = Direction.DOWN;
+			setDirectRobot(Direction.DOWN);
 		}
 	}
 
 	public void turnRight(){
 		switch(_directRobot){
 		case UP:
-			_directRobot = Direction.RIGHT;
+			setDirectRobot(Direction.RIGHT);
 		case DOWN:
-			_directRobot = Direction.LEFT;
+			setDirectRobot(Direction.LEFT);
 		case RIGHT:
-			_directRobot = Direction.DOWN;
+			setDirectRobot(Direction.DOWN);
 		case LEFT:
-			_directRobot = Direction.UP;
+			setDirectRobot(Direction.UP);
 		}
 
 	}
@@ -53,13 +53,13 @@ public class Robot {
 		return _directRobot;
 	}
 	// SETTERS
+	// should be private unless stated otherwise in the maman 15.5
 	public void setDirectRobot(Direction directRobot) {
 		_directRobot = directRobot;
 	}
 
 	private void setID() {
-		Integer ID = RobotArray.getID(); 
-		_idRobot = ID;
+		_idRobot = RobotArray.getID(); 
 	}
 
 	public String toString(){
