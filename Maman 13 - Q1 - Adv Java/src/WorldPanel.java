@@ -12,8 +12,8 @@ public class WorldPanel extends JPanel{
 	 */
 	private static final long serialVersionUID = -5515271562836636528L;
 	GridLayout _worldLayout;
-	protected static RobotsWorld _robotsWorld;
-	protected static RobotArray _roboarray;
+	protected RobotsWorld _robotsWorld;
+	protected RobotArray _roboarray;
 	
 	public WorldPanel(Integer robot_width, Integer robot_height){
 		super();
@@ -27,5 +27,8 @@ public class WorldPanel extends JPanel{
 		for (int i = 0; i < robot_height; i++)
 			for (int j = 0; j < robot_width; j++)
 				this.add(new Robutton());
+				
 	}
+	
+	
 }

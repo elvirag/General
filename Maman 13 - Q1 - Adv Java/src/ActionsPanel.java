@@ -39,9 +39,12 @@ public class ActionsPanel extends JPanel implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
+		Robot robot;
+		
 		if (arg0.getComponent() == move){
 			move.setText("Moving...");
-			WorldPanel._robotsWorld.moveRobot(getLocation());
+			System.out.println("This button has this: " + arg0.getSource());
+			
 		}
 		if (arg0.getComponent() == right){
 			this.setEnabled(false);

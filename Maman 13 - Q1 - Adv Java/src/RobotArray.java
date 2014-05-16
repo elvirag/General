@@ -2,29 +2,36 @@
 
 public class RobotArray{
 
-	public static Robot[] _roboarray;
+	public static Integer[] _roboarray;
 	private static Integer _minID;
 
 	public RobotArray(){
-		_roboarray = new Robot[Main.get_Width() * Main.get_Height()];
-		System.out.println(_roboarray);
+		_roboarray = new Integer[(Main.get_Width() * Main.get_Height()) / (Main.ROBOT_SIZE * Main.ROBOT_SIZE)];
 		_minID = 0;
 	}
 
 
 
-	public static Integer getID() {
-
+	public static Integer setID() {
+		//Integer id = null;
+		
+		for (Integer index: _roboarray) //TODO: remove this, for debugging when I get to deleting robots
+			System.out.println(index);
+		System.out.println("end of id array");
+		
 		for (int i = 0 ; i <= _minID ; i++) {
 			if ( _roboarray[i] == null ){
 				_minID = i;
-				break;
+				_roboarray[i] = -1;
+				return _minID;
 			}
+			else
+				_minID++;
 		}
 		return _minID;
 	}
 
-	public static void FreeID(Robot robot){
+	public void FreeID(Robot robot){
 		Integer robID = robot.getIdRobot();
 
 		_roboarray[robID] = null;

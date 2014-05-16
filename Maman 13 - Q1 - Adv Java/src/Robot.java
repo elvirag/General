@@ -8,13 +8,13 @@ public class Robot {
 	private Direction _directRobot;
 
 	public Robot(Direction direction){
-		setID();
 		setDirectRobot(direction);
+		_idRobot = RobotArray.setID();
 	}
 
 
 	public void turnLeft(){
-		switch(_directRobot){
+		switch(getDirectRobot()){
 		case UP:
 			setDirectRobot(Direction.LEFT);
 		case DOWN:
@@ -27,7 +27,7 @@ public class Robot {
 	}
 
 	public void turnRight(){
-		switch(_directRobot){
+		switch(getDirectRobot()){
 		case UP:
 			setDirectRobot(Direction.RIGHT);
 		case DOWN:
@@ -52,14 +52,10 @@ public class Robot {
 	public Direction getDirectRobot() {
 		return _directRobot;
 	}
+	
 	// SETTERS
-	// should be private unless stated otherwise in the maman 15.5
-	public void setDirectRobot(Direction directRobot) {
+	private void setDirectRobot(Direction directRobot) {
 		_directRobot = directRobot;
-	}
-
-	private void setID() {
-		_idRobot = RobotArray.getID(); 
 	}
 
 	public String toString(){
