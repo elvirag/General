@@ -2,6 +2,7 @@ import java.awt.FlowLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -11,10 +12,10 @@ public class ActionsPanel extends JPanel implements MouseListener{
 	 * 
 	 */
 	private static final long serialVersionUID = -969652273342908891L;
-	JButton move;
-	JButton right;
-	JButton left;
-	JButton delete;
+	protected JButton move;
+	protected JButton right;
+	protected JButton left;
+	protected JButton delete;
 
 	public ActionsPanel() {
 		super();
@@ -28,48 +29,41 @@ public class ActionsPanel extends JPanel implements MouseListener{
 		this.add(right);
 		this.add(left);
 		this.add(delete);
-
+		
 		move.addMouseListener(this);
 		right.addMouseListener(this);
 		left.addMouseListener(this);
 		delete.addMouseListener(this);
-
-
 	}
+	
 
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		Robot robot;
+	public void mouseClicked(MouseEvent e) {
+		System.out.println("click3");
 		
-		if (arg0.getComponent() == move){
-			move.setText("Moving...");
-			System.out.println("This button has this: " + arg0.getSource());
-			
-		}
-		if (arg0.getComponent() == right){
-			this.setEnabled(false);
-		}
-
-		if (arg0.getComponent() == left){
-			this.setEnabled(false);
-		}
-
-		if (arg0.getComponent() == delete){
-			this.setEnabled(false);
-		}
-
-
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {}
+	public void mouseEntered(MouseEvent e) {
+		System.out.println("enter3");
+	}
+
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {}
+	public void mouseExited(MouseEvent e) {
+		System.out.println("exit3");
+	}
+
 
 	@Override
-	public void mousePressed(MouseEvent arg0) {}
+	public void mousePressed(MouseEvent e) {
+		System.out.println("press3");
+	}
+
 
 	@Override
-	public void mouseReleased(MouseEvent arg0) {}
+	public void mouseReleased(MouseEvent e) {
+		System.out.println("release3");
+	}
+
 }
