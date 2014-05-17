@@ -11,12 +11,7 @@ public class RobotArray{
 	}
 
 
-
 	public static Integer setID() {
-		
-		for (Integer index: _roboarray) //TODO: remove this, for debugging when I get to deleting robots
-			System.out.println(index);
-		System.out.println("end of id array");
 		
 		for (int i = 0 ; i <= _minID ; i++) {
 			if ( _roboarray[i] == null ){
