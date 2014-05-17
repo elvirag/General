@@ -2,6 +2,8 @@
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -29,9 +31,13 @@ public class Main {
 	public static void init() {
 		do {
 			try {
-				setHeight(Integer.parseInt(JOptionPane.showInputDialog(
-						null, "Input height in number of robots (1-10)", "Height of Robots World",
-						JOptionPane.QUESTION_MESSAGE)));
+				String height = JOptionPane.showInputDialog(null,
+						"Input height in number of robots (1-10)",
+						"Height of Robots World",
+						JOptionPane.QUESTION_MESSAGE);
+				if (height == null)
+					quit(); // asking whether to quit
+				setHeight(Integer.parseInt(height));
 			} catch (NumberFormatException e) {
 				JOptionPane
 				.showMessageDialog(
@@ -39,10 +45,19 @@ public class Main {
 						"You have input a number in the wrong range. Please try again.",
 						"Wrong input", JOptionPane.WARNING_MESSAGE);
 			}
+			catch (NullPointerException npe) {
+
+			}
+		} while(get_Height() == null );
+
+		do {
 			try {
-				setWidth(Integer.parseInt(JOptionPane.showInputDialog(
+				String width = JOptionPane.showInputDialog(
 						null, "Input width in number of robots (1-10)", "Width of Robots World",
-						JOptionPane.QUESTION_MESSAGE)));
+						JOptionPane.QUESTION_MESSAGE);
+				if (width == null)
+					quit();
+				setWidth(Integer.parseInt(width));
 			} catch (NumberFormatException e) {
 				JOptionPane
 				.showMessageDialog(
@@ -51,8 +66,18 @@ public class Main {
 						"Wrong input", JOptionPane.WARNING_MESSAGE);
 			}
 
-		} while (get_Height() == null || get_Width() == null);
+		} while (get_Width() == null);
 		_robotsWorld = new RobotsWorld(get_Width(), get_Height()); // Adding the robot world so it can be updated.
+	}
+
+	private static void quit() {
+		int input = JOptionPane //if user wants to quit before inputing the height/width
+				.showConfirmDialog(null,
+						"Would you like to quit?",
+						"Exit?",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+		if (input == JOptionPane.YES_OPTION)
+			System.exit(0);
+
 	}
 
 	static Integer get_Width() {

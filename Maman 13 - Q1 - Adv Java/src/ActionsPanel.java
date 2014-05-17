@@ -16,6 +16,7 @@ public class ActionsPanel extends JPanel implements MouseListener{
 	private static final long serialVersionUID = -969652273342908891L;
 
 	private Point _selectedRobot;
+	private Robot tempRobot;
 	private Color orig;
 
 	protected JButton move;
@@ -68,45 +69,79 @@ public class ActionsPanel extends JPanel implements MouseListener{
 		JButton temp = (JButton) e.getComponent();
 
 		if (_selectedRobot == null){
+			tempRobot = null;
 			JOptionPane.showMessageDialog(null,
-											"You have to select a robot first. Please try again.",
-											"No selection", JOptionPane.WARNING_MESSAGE);
+					"You have to select a robot first. Please try again.",
+					"No selection", JOptionPane.WARNING_MESSAGE);
 		}
+		else {
+			//this is for moving the robot. That was fun... NOT
+			if (temp.getText().equals(BTN_MOVE) ){
 
-		if (temp.getText().equals(BTN_MOVE) ){
+				Point newLocation = null;
+				Robot tempBot = null;
+				Integer count = 0;
+				try{
+					tempBot = Main._robotsWorld.getRobot(_selectedRobot);
+					System.out.println("tempbot @ beginning" + tempBot.toString());
+				}
+				catch(NullPointerException npe){
+					if (_selectedRobot == null){
+						JOptionPane.showMessageDialog(null,
+								"You have to select a robot first. Please try again.",
+								"No selection", JOptionPane.WARNING_MESSAGE);
+					}
+				}
+				do {
+					try{
+						tempBot = Main._robotsWorld.getRobot(_selectedRobot);
+						newLocation = Main._robotsWorld.moveRobot(_selectedRobot);
+						Main._worldPanel.getRobutton(_selectedRobot).setText(""); // deleting content from previous location
+						Main._worldPanel.getRobutton(_selectedRobot).setBackground(orig); //setting the color to not selected
+						Main._worldPanel.getRobutton(newLocation).setText(Main._robotsWorld.getRobot(newLocation).toString()); //setting robot text to new location
+						Main._worldPanel.getRobutton(newLocation).setBackground(Color.PINK); //setting new robot to selected
+					}
+					catch(NullPointerException | ArrayIndexOutOfBoundsException npe){
+						count++;
+						System.out.printf("Exception! Not moving my robot(%d)!!!\n", count);
+						System.out.println("The tempbot (Hope this works):" + tempBot);
+						System.out.println("the point of the robot: " + _selectedRobot);
+						if (_selectedRobot == null){
+							JOptionPane.showMessageDialog(null,
+									"You have to select a robot first. Please try again.",
+									"No selection", JOptionPane.WARNING_MESSAGE);
+						}
+						System.out.println("The robbuton!!! :" + Main._worldPanel.getRobutton(_selectedRobot));
+						Main._worldPanel.getRobutton(_selectedRobot).setText(tempBot.toString()); // setting back the old contents from tempbot
+						Main._worldPanel.getRobutton(_selectedRobot).setBackground(Color.PINK); //setting the old robot to be selected
+						newLocation = _selectedRobot;
+					}
+				} while (tempBot == null);
+				_selectedRobot = newLocation;
 
-			Point newLocation = Main._robotsWorld.moveRobot(_selectedRobot);
+			}
 
-			try{
-				Main._worldPanel.getRobutton(_selectedRobot).setText(""); // deleting content from previous location
-				Main._worldPanel.getRobutton(_selectedRobot).setBackground(orig); //setting the color to not selected
-				Main._worldPanel.getRobutton(newLocation).setText(Main._robotsWorld.getRobot(newLocation).toString()); //setting robot text to new location
-				Main._worldPanel.getRobutton(newLocation).setBackground(Color.PINK); //setting new robot to selected
+			//this is for turning right
+			if (temp.getText().equals(BTN_RIGHT) ){
+				if (Main._robotsWorld.turnRobotRight(_selectedRobot)){
+					Main._worldPanel.getRobutton(_selectedRobot).setText(Main._robotsWorld.getRobot(_selectedRobot).toString());
+				}
 			}
-			catch(NullPointerException | ArrayIndexOutOfBoundsException npe){
-				System.out.println("Exception! Not moving my robot!!!");
-				Main._worldPanel.getRobutton(_selectedRobot).setText(Main._robotsWorld.getRobot(_selectedRobot).toString()); // setting back the old contents
-				Main._worldPanel.getRobutton(_selectedRobot).setBackground(Color.PINK); //setting the old robot to be selected
-				newLocation = _selectedRobot;
-			}
-			_selectedRobot = newLocation;
 
-		}
-		if (temp.getText().equals(BTN_RIGHT) ){
-			if (Main._robotsWorld.turnRobotRight(_selectedRobot)){
-				Main._worldPanel.getRobutton(_selectedRobot).setText(Main._robotsWorld.getRobot(_selectedRobot).toString());
+			//this is for turning right
+			if (temp.getText().equals(BTN_LEFT) ){
+				if (Main._robotsWorld.turnRobotLeft(_selectedRobot)){
+					Main._worldPanel.getRobutton(_selectedRobot).setText(Main._robotsWorld.getRobot(_selectedRobot).toString());
+				}
 			}
-		}
-		if (temp.getText().equals(BTN_LEFT) ){
-			if (Main._robotsWorld.turnRobotLeft(_selectedRobot)){
-				Main._worldPanel.getRobutton(_selectedRobot).setText(Main._robotsWorld.getRobot(_selectedRobot).toString());
+
+			//this is for deleting robot
+			if (temp.getText().equals(BTN_DELETE) ){
+				Main._worldPanel.getRobutton(_selectedRobot).setBackground(orig);
+				Main._robotsWorld.removeRobot(_selectedRobot);
+				Main._worldPanel.getRobutton(_selectedRobot).setText("");
+				_selectedRobot = null;
 			}
-		}
-		if (temp.getText().equals(BTN_DELETE) ){
-			Main._worldPanel.getRobutton(_selectedRobot).setBackground(orig);
-			Main._robotsWorld.removeRobot(_selectedRobot);
-			Main._worldPanel.getRobutton(_selectedRobot).setText("");
-			_selectedRobot = null;
 		}
 	}
 

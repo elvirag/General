@@ -9,11 +9,11 @@ public class RobotsWorld {
 	private Robot[][] _robotWorld;
 
 	public RobotsWorld(Integer width, Integer height) {
-		_robotWorld = new Robot[setWidth(width)][setHeight(height)];
+		_robotWorld = new Robot[setHeight(height)][setWidth(width)];
 	}
 
 	public boolean addRobot(Robot r, Point p) {
-		if (getRobot(p) == null && p.x < _width && p.y < _height) {
+		if (getRobot(p) == null && p.x < _height && p.y < _width ) {
 			_robotWorld[p.x][p.y] = r;
 			return true;
 		} else {
