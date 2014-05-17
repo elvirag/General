@@ -16,7 +16,6 @@ public class ActionsPanel extends JPanel implements MouseListener{
 	private static final long serialVersionUID = -969652273342908891L;
 
 	private Point _selectedRobot;
-	private Robot tempRobot;
 	private Color orig;
 
 	protected JButton move;
@@ -69,7 +68,6 @@ public class ActionsPanel extends JPanel implements MouseListener{
 		JButton temp = (JButton) e.getComponent();
 
 		if (_selectedRobot == null){
-			tempRobot = null;
 			JOptionPane.showMessageDialog(null,
 					"You have to select a robot first. Please try again.",
 					"No selection", JOptionPane.WARNING_MESSAGE);

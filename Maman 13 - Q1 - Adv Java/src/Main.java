@@ -2,8 +2,6 @@
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
