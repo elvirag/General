@@ -13,7 +13,6 @@ public class RobotArray{
 
 
 	public static Integer setID() {
-		//Integer id = null;
 		
 		for (Integer index: _roboarray) //TODO: remove this, for debugging when I get to deleting robots
 			System.out.println(index);
@@ -31,15 +30,10 @@ public class RobotArray{
 		return _minID;
 	}
 
-	public void FreeID(Robot robot){
-		Integer robID = robot.getIdRobot();
 
-		_roboarray[robID] = null;
-		if (robID < _minID)
-			_minID = robID;
+	public static void FreeID(Robot temp) {
+		_minID = temp.getIdRobot();
+		_roboarray[temp.getIdRobot()] = null;
 	}
-
-
-
 
 }

@@ -39,17 +39,19 @@ public class WorldPanel extends JPanel implements MouseListener{
 	}
 	
 	public Robutton getRobutton(Point selectedRobot){
+		if (selectedRobot.getX() < 0 || selectedRobot.getY() < 0 || 
+			selectedRobot.getX() > _robotsMatrix.length          ||
+			selectedRobot.getY() > _robotsMatrix[0].length )
+			return null;
 		return _robotsMatrix[(int) selectedRobot.getX()][(int) selectedRobot.getY()];
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		//TODO to get the id of the robot for another method to output it.
-		System.out.println("click-world\n");
+
 		Robutton currRobot = (Robutton) e.getComponent();
 		
 		if (currRobot.getText().isEmpty()){
-			System.out.println("adding a robot!!!");
 			
 			Direction direct = null;
 			String direcString = null;
@@ -79,7 +81,6 @@ public class WorldPanel extends JPanel implements MouseListener{
 	
 			Robot thisRobot = new Robot(direct);
 			Main._robotsWorld.addRobot(thisRobot, currRobot.getLocation());
-			System.out.println("here: " + Main._robotsWorld.getRobot(currRobot.getLocation()));
 			System.out.println(currRobot.getLocation());
 			currRobot.setText(thisRobot.toString());
 		}

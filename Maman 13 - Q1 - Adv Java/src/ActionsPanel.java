@@ -1,9 +1,11 @@
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -14,13 +16,14 @@ public class ActionsPanel extends JPanel implements MouseListener{
 	private static final long serialVersionUID = -969652273342908891L;
 
 	private Point _selectedRobot;
+	private Color orig;
 
 	protected JButton move;
 	protected JButton right;
 	protected JButton left;
 	protected JButton delete;
 	private final String BTN_RIGHT = "Turn Right", BTN_MOVE = "Move",
-						 BTN_LEFT = "Turn Left", BTN_DELETE = "Delete";
+			BTN_LEFT = "Turn Left", BTN_DELETE = "Delete";
 
 
 	public ActionsPanel() {
@@ -31,6 +34,8 @@ public class ActionsPanel extends JPanel implements MouseListener{
 		left = new JButton(BTN_LEFT);
 		delete = new JButton(BTN_DELETE);
 
+		orig = move.getBackground();
+		
 		this.add(move);
 		this.add(right);
 		this.add(left);
@@ -42,11 +47,12 @@ public class ActionsPanel extends JPanel implements MouseListener{
 		delete.addMouseListener(this);
 	}
 
-	public void setRobotsWorld(RobotsWorld robotsWorld){
-		
-	}
-	
 	public void setSelectedRobot(Point currRobot) {
+		for (int i = 0 ; i < Main._worldPanel._robotsMatrix.length ; i++)
+			for (int j = 0 ; j < Main._worldPanel._robotsMatrix[0].length ; j++)
+				Main._worldPanel._robotsMatrix[i][j].setBackground(orig);
+		
+		Main._worldPanel.getRobutton(currRobot).setBackground(Color.PINK);
 		_selectedRobot = new Point(currRobot);
 	}
 
@@ -58,35 +64,42 @@ public class ActionsPanel extends JPanel implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		
+
 		JButton temp = (JButton) e.getComponent();
-		System.out.println("the comp is: " + temp.getText());
-		
+
+		if (_selectedRobot == null){
+			JOptionPane
+			.showMessageDialog(
+					null,
+					"You have to select a robot first. Please try again.", "No selection", JOptionPane.WARNING_MESSAGE);
+		}
+
+
+		Main._worldPanel.getRobutton(_selectedRobot).setBackground(Color.PINK);
+
 		if (temp.getText().equals(BTN_MOVE) ){
-			System.out.println("Move!");
 			Point newLocation = Main._robotsWorld.moveRobot(_selectedRobot);
 			//System.out.println("robot selected: " + Main._robotsWorld.getRobot(_selectedRobot).toString());
 			System.out.println("robot new: " + Main._robotsWorld.getRobot(newLocation).toString());
 			Main._worldPanel.getRobutton(_selectedRobot).setText("");
 			Main._worldPanel.getRobutton(newLocation).setText(Main._robotsWorld.getRobot(newLocation).toString());
 			_selectedRobot = newLocation;
-				
+
 		}
 		if (temp.getText().equals(BTN_RIGHT) ){
 			if (Main._robotsWorld.turnRobotRight(_selectedRobot)){
-				System.out.println("world panel robbuton: " + Main._worldPanel.getRobutton(_selectedRobot));
 				Main._worldPanel.getRobutton(_selectedRobot).setText(Main._robotsWorld.getRobot(_selectedRobot).toString());
-				System.out.println("The new robot is:" + Main._robotsWorld.getRobot(_selectedRobot).toString());
-				System.out.println("The button this text is supposed to be on: " + Main._worldPanel.getRobutton(_selectedRobot).getText());
 			}
 		}
 		if (temp.getText().equals(BTN_LEFT) ){
-			System.out.println("Turn Left!");
-			Main._robotsWorld.getRobot(_selectedRobot).turnLeft();
+			if (Main._robotsWorld.turnRobotLeft(_selectedRobot)){
+				Main._worldPanel.getRobutton(_selectedRobot).setText(Main._robotsWorld.getRobot(_selectedRobot).toString());
+			}
 		}
 		if (temp.getText().equals(BTN_DELETE) ){
-			System.out.println("Delete!");
 			Main._robotsWorld.removeRobot(_selectedRobot);
+			Main._worldPanel.getRobutton(_selectedRobot).setText("");
+			_selectedRobot = null;
 		}
 	}
 

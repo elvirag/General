@@ -49,7 +49,8 @@ public class Robot {
 	}
 	@Override
 	public void finalize(){
-
+		_idRobot = null;
+		_directRobot = null;
 	}
 
 	// GETTERS

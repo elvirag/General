@@ -54,9 +54,7 @@ public class RobotsWorld {
 
 	public boolean turnRobotRight(Point p) {
 		if (getRobot(p) != null) {
-			System.out.println("from robots world - robot before turn:" + getRobot(p));
 			getRobot(p).turnRight();
-			System.out.println("from robots world - robot after turn:" + getRobot(p));
 			return true;
 		}
 		return false;
@@ -73,7 +71,8 @@ public class RobotsWorld {
 	public Robot removeRobot(Point p) {
 		Robot temp = getRobot(p);
 		if (temp != null) {
-			//RobotArray.FreeID(temp); //freeing the ID so other Robots can use it
+			RobotArray.FreeID(temp); //freeing the ID so other Robots can use it
+			_robotWorld[p.x][p.y].finalize();
 			_robotWorld[p.x][p.y] = null;
 			return temp;
 		}
