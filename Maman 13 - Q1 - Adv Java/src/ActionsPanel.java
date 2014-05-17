@@ -64,12 +64,17 @@ public class ActionsPanel extends JPanel implements MouseListener{
 		
 		if (temp.getText().equals(BTN_MOVE) ){
 			System.out.println("Move!");
-			Main._robotsWorld.moveRobot(_selectedRobot);
-			
+			Point newLocation = Main._robotsWorld.moveRobot(_selectedRobot);
+			//System.out.println("robot selected: " + Main._robotsWorld.getRobot(_selectedRobot).toString());
+			System.out.println("robot new: " + Main._robotsWorld.getRobot(newLocation).toString());
+			Main._worldPanel.getRobutton(_selectedRobot).setText("");
+			Main._worldPanel.getRobutton(newLocation).setText(Main._robotsWorld.getRobot(newLocation).toString());
+			_selectedRobot = newLocation;
+				
 		}
 		if (temp.getText().equals(BTN_RIGHT) ){
-			System.out.println("Turn Right!");
 			if (Main._robotsWorld.turnRobotRight(_selectedRobot)){
+				System.out.println("world panel robbuton: " + Main._worldPanel.getRobutton(_selectedRobot));
 				Main._worldPanel.getRobutton(_selectedRobot).setText(Main._robotsWorld.getRobot(_selectedRobot).toString());
 				System.out.println("The new robot is:" + Main._robotsWorld.getRobot(_selectedRobot).toString());
 				System.out.println("The button this text is supposed to be on: " + Main._worldPanel.getRobutton(_selectedRobot).getText());

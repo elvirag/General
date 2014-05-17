@@ -15,11 +15,11 @@ public class Robutton extends JButton {
 	}
 
 	public Point getLocation() {
-		return new Point(_location);
+		return _location;
 	}
 
 	public void setLocation(Point location) {
-		_location = new Point(location);
+		_location = location;
 	}
 
 }

@@ -30,7 +30,8 @@ public class WorldPanel extends JPanel implements MouseListener{
 		
 		for (int i = 0; i < _robotsMatrix.length ; i++)
 			for (int j = 0; j < _robotsMatrix[0].length ; j++){
-				Robutton temp  = new Robutton(new Point(i,j));
+				Robutton temp = new Robutton(new Point(i,j));
+				_robotsMatrix[i][j] = temp;						
 				temp.setPreferredSize(new Dimension(Main.ROBOT_SIZE, Main.ROBOT_SIZE));
 				this.add(temp);
 				temp.addMouseListener(this);
