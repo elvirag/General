@@ -28,12 +28,16 @@ public class RobotsWorld {
 			switch (getRobot(p).getDirectRobot()) {
 			case UP:
 				temp.y--;
+				break;
 			case DOWN:
 				temp.y++;
+				break;
 			case RIGHT:
 				temp.x++;
+				break;
 			case LEFT:
 				temp.x--;
+				break;
 			}
 			if (temp.x < 0 || temp.y < 0 || temp.x > _width || temp.y > _height) { // should check if we are out of bounds, the get robot will give a false positive otherwise :)
 				return null;
@@ -50,7 +54,9 @@ public class RobotsWorld {
 
 	public boolean turnRobotRight(Point p) {
 		if (getRobot(p) != null) {
+			System.out.println("from robots world - robot before turn:" + getRobot(p));
 			getRobot(p).turnRight();
+			System.out.println("from robots world - robot after turn:" + getRobot(p));
 			return true;
 		}
 		return false;

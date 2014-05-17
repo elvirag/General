@@ -1,10 +1,10 @@
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -15,34 +15,37 @@ public class WorldPanel extends JPanel implements MouseListener{
 	 * 
 	 */
 	private static final long serialVersionUID = -5515271562836636528L;
-	GridLayout _worldLayout;
-	protected RobotsWorld _robotsWorld;
+	private GridLayout _worldLayout;
 	protected RobotArray _roboarray;
+	protected Robutton[][] _robotsMatrix;
 	
-	public WorldPanel(Integer robot_width, Integer robot_height){
+	
+	public WorldPanel(){
 		super();
-		_robotsWorld = new RobotsWorld(robot_width, robot_height); // Adding the robot world so it can be updated.
 		_roboarray = new RobotArray();
-		this.setPreferredSize(new Dimension(robot_width * Main.ROBOT_SIZE,robot_height * Main.ROBOT_SIZE));
-		
-		_worldLayout = new GridLayout(robot_width,robot_height,0,0);
+		_robotsMatrix = new Robutton[Main.get_Width() /  Main.ROBOT_SIZE][Main.get_Height() /  Main.ROBOT_SIZE];
+		this.setPreferredSize(new Dimension(Main.get_Width(), Main.get_Height()));
+		_worldLayout = new GridLayout( _robotsMatrix.length, _robotsMatrix[0].length ,0,0);
 		this.setLayout(_worldLayout);
 		
-		for (int i = 0; i < robot_height; i++)
-			for (int j = 0; j < robot_width; j++){
-				JButton temp  = new JButton();
+		for (int i = 0; i < _robotsMatrix.length ; i++)
+			for (int j = 0; j < _robotsMatrix[0].length ; j++){
+				Robutton temp  = new Robutton(new Point(i,j));
 				temp.setPreferredSize(new Dimension(Main.ROBOT_SIZE, Main.ROBOT_SIZE));
 				this.add(temp);
 				temp.addMouseListener(this);
 			}	
 	}
 	
+	public Robutton getRobutton(Point selectedRobot){
+		return _robotsMatrix[(int) selectedRobot.getX()][(int) selectedRobot.getY()];
+	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		//TODO to get the id of the robot for another method to output it.
 		System.out.println("click-world\n");
-		JButton currRobot = (JButton) e.getComponent();
+		Robutton currRobot = (Robutton) e.getComponent();
 		
 		if (currRobot.getText().isEmpty()){
 			System.out.println("adding a robot!!!");
@@ -74,9 +77,13 @@ public class WorldPanel extends JPanel implements MouseListener{
 			while (direct == null);
 	
 			Robot thisRobot = new Robot(direct);
-			_robotsWorld.addRobot(thisRobot, getLocation());
-			System.out.println("here:" + _robotsWorld.getRobot(getLocation()));
+			Main._robotsWorld.addRobot(thisRobot, currRobot.getLocation());
+			System.out.println("here: " + Main._robotsWorld.getRobot(currRobot.getLocation()));
+			System.out.println(currRobot.getLocation());
 			currRobot.setText(thisRobot.toString());
+		}
+		else {
+			Main._actionsPanel.setSelectedRobot(currRobot.getLocation());
 		}
 	}
 

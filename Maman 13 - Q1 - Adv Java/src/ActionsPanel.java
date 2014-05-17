@@ -1,10 +1,9 @@
-import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -13,39 +12,77 @@ public class ActionsPanel extends JPanel implements MouseListener{
 	 * 
 	 */
 	private static final long serialVersionUID = -969652273342908891L;
-	
-	private Robot _boardRobot;
-	private JButton _selectedRobot;
-	
+
+	private Point _selectedRobot;
+
 	protected JButton move;
 	protected JButton right;
 	protected JButton left;
 	protected JButton delete;
+	private final String BTN_RIGHT = "Turn Right", BTN_MOVE = "Move",
+						 BTN_LEFT = "Turn Left", BTN_DELETE = "Delete";
+
 
 	public ActionsPanel() {
 		super();
 		this.setLayout(new FlowLayout(FlowLayout.CENTER));
-		move = new JButton("Move");
-		right = new JButton("Turn Right");
-		left = new JButton("Turn Left");
-		delete = new JButton("Delete");
+		move = new JButton(BTN_MOVE);
+		right = new JButton(BTN_RIGHT);
+		left = new JButton(BTN_LEFT);
+		delete = new JButton(BTN_DELETE);
 
 		this.add(move);
 		this.add(right);
 		this.add(left);
 		this.add(delete);
-		
+
 		move.addMouseListener(this);
 		right.addMouseListener(this);
 		left.addMouseListener(this);
 		delete.addMouseListener(this);
 	}
+
+	public void setRobotsWorld(RobotsWorld robotsWorld){
+		
+	}
 	
+	public void setSelectedRobot(Point currRobot) {
+		_selectedRobot = new Point(currRobot);
+	}
+
+	public Point getSelectedRobot(){
+		return new Point(_selectedRobot);
+	}
+
+
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		System.out.println("click-action\n");
 		
+		JButton temp = (JButton) e.getComponent();
+		System.out.println("the comp is: " + temp.getText());
+		
+		if (temp.getText().equals(BTN_MOVE) ){
+			System.out.println("Move!");
+			Main._robotsWorld.moveRobot(_selectedRobot);
+			
+		}
+		if (temp.getText().equals(BTN_RIGHT) ){
+			System.out.println("Turn Right!");
+			if (Main._robotsWorld.turnRobotRight(_selectedRobot)){
+				Main._worldPanel.getRobutton(_selectedRobot).setText(Main._robotsWorld.getRobot(_selectedRobot).toString());
+				System.out.println("The new robot is:" + Main._robotsWorld.getRobot(_selectedRobot).toString());
+				System.out.println("The button this text is supposed to be on: " + Main._worldPanel.getRobutton(_selectedRobot).getText());
+			}
+		}
+		if (temp.getText().equals(BTN_LEFT) ){
+			System.out.println("Turn Left!");
+			Main._robotsWorld.getRobot(_selectedRobot).turnLeft();
+		}
+		if (temp.getText().equals(BTN_DELETE) ){
+			System.out.println("Delete!");
+			Main._robotsWorld.removeRobot(_selectedRobot);
+		}
 	}
 
 	@Override
@@ -69,39 +106,6 @@ public class ActionsPanel extends JPanel implements MouseListener{
 //
 //@Override
 //public void mouseClicked(MouseEvent e) {
-//	System.out.println("click-total-panel: " + ((JButton) e.getComponent()).getText() + "\n");
-//	
-//	if (((JButton) e.getComponent()).getText().isEmpty()){
-//		//here writing to add robot
-//		System.out.println("adding a robot!!!");
-//		
-//		Direction direct = null;
-//		String direcString = null;
-//		_selectedRobot = (JButton) e.getComponent();
-//		do {
-//			direcString = JOptionPane.showInputDialog("Please input direction of robot: (Up, Down, Right or Left only)");
-//			switch(direcString){
-//			case "up":
-//				direct = Direction.UP;
-//				break;
-//			case "down":
-//				direct = Direction.DOWN;
-//				break;
-//			case "right":
-//				direct = Direction.RIGHT;
-//				break;
-//			case "left":
-//				direct = Direction.LEFT;
-//				break;
-//			default:
-//				setBackground(Color.RED);
-//			}
-//		}
-//		while (direct == null);
-//
-//		_boardRobot = new Robot(direct);
-//		_selectedRobot.setText(_boardRobot.toString());
-//	}
 //	
 //	else if (((JButton) e.getComponent()).getText().matches("\\d")){
 //		//here writing to store this robot and change it's background so I can use it to do things.
@@ -117,18 +121,6 @@ public class ActionsPanel extends JPanel implements MouseListener{
 //}
 
 
-//}
-//if (e.getComponent().getName().equalsIgnoreCase("Move") ){
-//	System.out.println("Move!");
-//}
-//if (e.getComponent().getName().equalsIgnoreCase("Turn Right") ){
-//	System.out.println("Turn Right!");
-//}
-//if (e.getComponent().getName().equalsIgnoreCase("Turn Left") ){
-//	System.out.println("Turn Left!");
-//}
-//if (e.getComponent().getName().equalsIgnoreCase("Delete") ){
-//	System.out.println("Delete!");
 //}
 //}
 //

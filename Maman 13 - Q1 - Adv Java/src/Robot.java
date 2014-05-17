@@ -17,12 +17,16 @@ public class Robot {
 		switch(getDirectRobot()){
 		case UP:
 			setDirectRobot(Direction.LEFT);
+			break;
 		case DOWN:
 			setDirectRobot(Direction.RIGHT);
+			break;
 		case RIGHT:
 			setDirectRobot(Direction.UP);
+			break;
 		case LEFT:
 			setDirectRobot(Direction.DOWN);
+			break;
 		}
 	}
 
@@ -30,12 +34,16 @@ public class Robot {
 		switch(getDirectRobot()){
 		case UP:
 			setDirectRobot(Direction.RIGHT);
+			break;
 		case DOWN:
 			setDirectRobot(Direction.LEFT);
+			break;
 		case RIGHT:
 			setDirectRobot(Direction.DOWN);
+			break;
 		case LEFT:
 			setDirectRobot(Direction.UP);
+			break;
 		}
 
 	}
@@ -62,7 +70,7 @@ public class Robot {
 
 		String arrow = "";
 
-		switch(_directRobot){
+		switch(getDirectRobot()){
 		case UP:
 			arrow = "^";
 			break;
@@ -76,7 +84,7 @@ public class Robot {
 			arrow = "<";
 			break;
 		}
-		return _idRobot + arrow;
+		return getIdRobot() + arrow;
 
 	}
 }

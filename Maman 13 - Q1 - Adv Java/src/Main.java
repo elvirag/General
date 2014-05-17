@@ -1,8 +1,10 @@
 
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 
 public class Main {
@@ -19,6 +21,9 @@ public class Main {
 	private static final Integer BUTTON_HEIGHT = 50;
 	private static Integer MAX_SIZE = 10;
 	private static Integer DEF_SIZE = 1;
+	protected static RobotsWorld _robotsWorld;
+	protected static WorldPanel _worldPanel;
+	protected static ActionsPanel _actionsPanel;
 
 
 	public static void init() {
@@ -47,11 +52,7 @@ public class Main {
 			}
 
 		} while (get_Height() == null || get_Width() == null);
-
-	}
-
-	void initRobotWorld(){
-
+		_robotsWorld = new RobotsWorld(get_Width(), get_Height()); // Adding the robot world so it can be updated.
 	}
 
 	static Integer get_Width() {
@@ -102,7 +103,13 @@ public class Main {
 		Integer frameHeight = get_Height() + BUTTON_HEIGHT;
 		frame.setSize( frameWidth  > MIN_WIDTH ? frameWidth : MIN_WIDTH ,
 				frameHeight  > MIN_HEIGHT ? frameHeight : MIN_HEIGHT); //TODO
-		frame.add(new TotalPanel());
+		JPanel totalPanel = new JPanel();
+		totalPanel.setLayout(new BorderLayout());
+		_actionsPanel = new ActionsPanel();
+		totalPanel.add(_actionsPanel, BorderLayout.SOUTH);
+		_worldPanel = new WorldPanel();
+		totalPanel.add(_worldPanel, BorderLayout.NORTH);
+		frame.add(totalPanel);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 
