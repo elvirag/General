@@ -65,7 +65,7 @@ public class Main {
 			}
 
 		} while (get_Width() == null);
-		_robotsWorld = new RobotsWorld(get_Width(), get_Height()); // Adding the robot world so it can be updated.
+		_robotsWorld = new RobotsWorld(get_Width() / ROBOT_SIZE, get_Height() / ROBOT_SIZE); // Adding the robot world so it can be updated.
 	}
 
 	private static void quit() {

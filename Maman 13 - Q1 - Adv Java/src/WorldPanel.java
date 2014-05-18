@@ -40,8 +40,8 @@ public class WorldPanel extends JPanel implements MouseListener{
 
 	public Robutton getRobutton(Point selectedRobot){
 		if (selectedRobot.getX() < 0 || selectedRobot.getY() < 0 || 
-				selectedRobot.getX() > _robotsMatrix[0].length          ||
-				selectedRobot.getY() > _robotsMatrix.length )
+				selectedRobot.getX() >= _robotsMatrix[0].length   ||
+				selectedRobot.getY() >= _robotsMatrix.length )
 			return null;
 		return _robotsMatrix[(int) selectedRobot.getX()][(int) selectedRobot.getY()];
 	}

@@ -39,7 +39,7 @@ public class RobotsWorld {
 				temp.y--;
 				break;
 			}
-			if (temp.x < 0 || temp.y < 0 || temp.x > _height || temp.y > _width) { // should check if we are out of bounds, the get robot will give a false positive otherwise :)
+			if (temp.x < 0 || temp.y < 0 || temp.x >= _height || temp.y >= _width) { // should check if we are out of bounds, the get robot will give a false positive otherwise :)
 				return null;
 			}
 			if (getRobot(temp) == null) {
