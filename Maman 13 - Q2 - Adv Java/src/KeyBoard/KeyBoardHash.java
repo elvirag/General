@@ -1,14 +1,22 @@
 package KeyBoard;
+
 import java.util.HashMap;
-import java.util.Map;
 
+/**
+ * This is the keyboard hash class.<br>
+ * It has all the buttons and their codes.<br>
+ * It also has a method to retrieve to strings according to the text on the buttons.<br>
+ * It matches the codes & the strings on the keys.
+ * It's default - protected
+ */
+class KeyBoardHash {
 
-public class KeyBoardHash {
+	//the definition of the hashmap
+	protected HashMap<Integer, String> _keyhash = new HashMap<Integer, String>();
 
-	protected Map<Integer, String> _keyhash = new HashMap<Integer, String>();
-
-	public KeyBoardHash() {
-		_keyhash.put(192,"~");
+	//the values in it.
+	protected KeyBoardHash() {
+		_keyhash.put(192,"`");
 		_keyhash.put(49,"1");
 		_keyhash.put(50,"2");
 		_keyhash.put(51,"3");
@@ -22,7 +30,7 @@ public class KeyBoardHash {
 		_keyhash.put(45,"-");
 		_keyhash.put(61,"+");
 		_keyhash.put(8,"Backspace");
-		
+
 		_keyhash.put(9,"Tab");
 		_keyhash.put(81,"Q");
 		_keyhash.put(87,"W");
@@ -37,7 +45,7 @@ public class KeyBoardHash {
 		_keyhash.put(91,"[");
 		_keyhash.put(93,"]");
 		_keyhash.put(92,"\\");
-		
+
 		_keyhash.put(20,"Caps");
 		_keyhash.put(65,"A");
 		_keyhash.put(83,"S");
@@ -51,7 +59,7 @@ public class KeyBoardHash {
 		_keyhash.put(59,":");
 		_keyhash.put(222,"'");
 		_keyhash.put(10,"Enter");
-		
+
 		_keyhash.put(16,"Shift");
 		_keyhash.put(90,"Z");
 		_keyhash.put(88,"X");
@@ -64,21 +72,17 @@ public class KeyBoardHash {
 		_keyhash.put(46,".");
 		_keyhash.put(47,"?");
 		_keyhash.put(38,"^");
-		
-		_keyhash.put(32,"                                                             ");
-		_keyhash.put(37,",");
-		_keyhash.put(40,"<");
-		_keyhash.put(39,"v");
-		_keyhash.put(86,">");
+
+		_keyhash.put(32," ");
+		_keyhash.put(18,"Alt");
+		_keyhash.put(17,"Ctrl");
+		_keyhash.put(37,"<");
+		_keyhash.put(40,"v");
+		_keyhash.put(39,">");
 	}
-	
-	public int getsize(){
-		return _keyhash.size();
-	}
-	
-	public String getString(Integer code){
+
+	//the protected method of getting the string of the button to compare with the real key string
+	protected String getString(Integer code){
 		return _keyhash.get(code);
 	}
-	
-	
 }

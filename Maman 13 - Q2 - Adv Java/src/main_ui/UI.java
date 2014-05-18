@@ -1,42 +1,20 @@
-package main_ui;
+package main_ui; // two packages, just to train. Also, the keyboard hash is totally concealed from user.
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
-
 import KeyBoard.KeyBoardPanel;
 import KeyBoard.TextArea;
 
-
+/**
+ * This class is only to do some order in the panels and not to clutter "Main"
+ */
 public class UI extends JPanel{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 6626591741620618093L;
-	
-	TextArea _textArea;
-	KeyBoardPanel _keyBoardPanel;
-	BorderLayout _layout = new BorderLayout();
-	
+
+	private static final long serialVersionUID = 6626591741620618093L; //some serial
+
 	public UI(){
 		super();
-		_textArea = new TextArea();
-		_keyBoardPanel = new KeyBoardPanel();
-		init();
+		this.setLayout(new BorderLayout());// sets border layout for the two panels
+		this.add(new TextArea(), BorderLayout.NORTH); //puts the text area up
+		this.add(new KeyBoardPanel(), BorderLayout.SOUTH); // puts the keyboard below it
 	}
-
-	public void init(){
-		this.setLayout(_layout);
-		addTextArea();
-		addKeyBoardPanel();
-		this.setVisible(true);
-	}
-
-	private void addTextArea() {
-		this.add(_textArea, BorderLayout.NORTH);
-	}
-
-	private void addKeyBoardPanel(){
-		this.add(_keyBoardPanel, BorderLayout.SOUTH);
-	}
-
 }

@@ -1,49 +1,59 @@
 package KeyBoard;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 
+/**
+ * This class just draws the keyboard.<br> Has no functionality whatsoever.
+ * 
+ * **/
 public class KeyBoardPanel extends JPanel{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3165378284531156913L;
+	private static final long serialVersionUID = -3165378284531156913L; // some serial
 
+	//Setting two kinds for flow layouts, to reduce code.
 	FlowLayout _leftFlow = new FlowLayout(FlowLayout.LEFT);
 	FlowLayout _centerFlow = new FlowLayout(FlowLayout.CENTER);
-	
+
+	// all the panels of the lines
 	JPanel _line1;
 	JPanel _line2;
 	JPanel _line3;
 	JPanel _line4;
 	JPanel _line5;
-	
+
+	/**
+	 * This is the KeyBoard Panel constructor. It constructs the lines & calls the methods that set the buttons
+	 * **/
 	public KeyBoardPanel() {
-		
+
+		//setting a GridLayout. Nice one!
 		this.setLayout(new GridLayout(6, 15));
-		
+		//setting the lines layout
 		_line1 = new JPanel(_leftFlow);
 		_line2 = new JPanel(_leftFlow);
 		_line3 = new JPanel(_leftFlow);
 		_line4 = new JPanel(_leftFlow);
 		_line5 = new JPanel(_centerFlow);
-		
+
+		//adding the lines to the frame
 		this.add(_line1);
 		this.add(_line2);
 		this.add(_line3);
 		this.add(_line4);
 		this.add(_line5);
-		
+
+		//setting the lines with buttons
 		setButtonsLine1();
 		setButtonsLine2();
 		setButtonsLine3();
 		setButtonsLine4();
 		setButtonsLine5();
-		
+
 	}
-	
+	//Adding all buttons - a method per line, so it will be ordered.
 	private void setButtonsLine1(){
 		KeyBoardButton buttonTag = new KeyBoardButton("`");
 		_line1.add(buttonTag);
@@ -71,10 +81,10 @@ public class KeyBoardPanel extends JPanel{
 		_line1.add(buttonMinus);
 		KeyBoardButton buttonPlus = new KeyBoardButton("+");
 		_line1.add(buttonPlus);
-		KeyBoardButton buttonBackSpace = new KeyBoardButton("BackSpace");
+		KeyBoardButton buttonBackSpace = new KeyBoardButton("Backspace");
 		_line1.add(buttonBackSpace);	
 	}
-	
+
 	private void setButtonsLine2(){
 		KeyBoardButton buttonTab = new KeyBoardButton("Tab");
 		_line2.add(buttonTab);
@@ -105,7 +115,7 @@ public class KeyBoardPanel extends JPanel{
 		KeyBoardButton buttonSlash1 = new KeyBoardButton("\\");
 		_line2.add(buttonSlash1);	
 	}
-	
+
 	private void setButtonsLine3(){
 		KeyBoardButton buttonCaps = new KeyBoardButton("Caps");
 		_line3.add(buttonCaps);
@@ -129,12 +139,12 @@ public class KeyBoardPanel extends JPanel{
 		_line3.add(buttonL);
 		KeyBoardButton buttontwodots = new KeyBoardButton(":");
 		_line3.add(buttontwodots);
-		KeyBoardButton buttonSlash2 = new KeyBoardButton("\\");
+		KeyBoardButton buttonSlash2 = new KeyBoardButton("'");
 		_line3.add(buttonSlash2);
 		KeyBoardButton buttonEnter = new KeyBoardButton("Enter");
 		_line3.add(buttonEnter);
-		}
-	
+	}
+
 	private void setButtonsLine4(){
 		KeyBoardButton buttonShift = new KeyBoardButton("Shift");
 		_line4.add(buttonShift);
@@ -160,13 +170,19 @@ public class KeyBoardPanel extends JPanel{
 		_line4.add(buttonQuestion);
 		KeyBoardButton buttonUp = new KeyBoardButton("^");
 		_line4.add(buttonUp);
-		}
-	
+	}
+
 	private void setButtonsLine5(){
-		KeyBoardButton buttonSpace = new KeyBoardButton("                                                                                                          ");
+		KeyBoardButton buttonSpace = new KeyBoardButton(" ");
+
+		int spaceWidth = 283; // This is to allign the space button.Continued vvv
+		int spaceHeight = 26; //If I use it's width in strings, it doesn't recognize the key. Looks better like that, anyway.
+		buttonSpace.setPreferredSize(new Dimension(spaceWidth, spaceHeight)); // so I set it's dimension
 		_line5.add(buttonSpace);
-		KeyBoardButton buttonComma2 = new KeyBoardButton(",");
-		_line5.add(buttonComma2);
+		KeyBoardButton buttonAlt = new KeyBoardButton("Alt");
+		_line5.add(buttonAlt);
+		KeyBoardButton buttonCtrl = new KeyBoardButton("Ctrl");
+		_line5.add(buttonCtrl);
 		KeyBoardButton buttonLeft = new KeyBoardButton("<");
 		_line5.add(buttonLeft);
 		KeyBoardButton buttonDown = new KeyBoardButton("v");
@@ -174,5 +190,5 @@ public class KeyBoardPanel extends JPanel{
 		KeyBoardButton buttonRight = new KeyBoardButton(">");
 		_line5.add(buttonRight);
 	}
-	
+
 }
