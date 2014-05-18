@@ -25,12 +25,13 @@ public class WorldPanel extends JPanel implements MouseListener{
 		_roboarray = new RobotArray();
 		_robotsMatrix = new Robutton[Main.get_Width() /  Main.ROBOT_SIZE][Main.get_Height() /  Main.ROBOT_SIZE];
 		this.setPreferredSize(new Dimension(Main.get_Width(), Main.get_Height()));
-		_worldLayout = new GridLayout( _robotsMatrix.length, _robotsMatrix[0].length ,0,0);
+		_worldLayout = new GridLayout(_robotsMatrix[0].length, _robotsMatrix.length ,0,0);
 		this.setLayout(_worldLayout);
 
 		for (int i = 0; i < _robotsMatrix.length ; i++)
 			for (int j = 0; j < _robotsMatrix[0].length ; j++){
 				Robutton temp = new Robutton(new Point(i,j));
+				temp.setText("");
 				_robotsMatrix[i][j] = temp;						
 				temp.setPreferredSize(new Dimension(Main.ROBOT_SIZE, Main.ROBOT_SIZE));
 				this.add(temp);
