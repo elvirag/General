@@ -21,8 +21,8 @@ public class ActionsPanel extends JPanel implements MouseListener{
 
 	//the action buttons
 	protected JButton move;
-	protected JButton right;
 	protected JButton left;
+	protected JButton right;
 	protected JButton delete;
 
 	//The text on those buttons
@@ -39,20 +39,20 @@ public class ActionsPanel extends JPanel implements MouseListener{
 		super();
 		this.setLayout(new FlowLayout(FlowLayout.CENTER));
 		move = new JButton(BTN_MOVE);
-		right = new JButton(BTN_RIGHT);
 		left = new JButton(BTN_LEFT);
+		right = new JButton(BTN_RIGHT);
 		delete = new JButton(BTN_DELETE);
 
 		orig = move.getBackground();
 
 		this.add(move);
-		this.add(right);
 		this.add(left);
+		this.add(right);
 		this.add(delete);
 
 		move.addMouseListener(this);
-		right.addMouseListener(this);
 		left.addMouseListener(this);
+		right.addMouseListener(this);
 		delete.addMouseListener(this);
 	}
 
@@ -112,13 +112,13 @@ public class ActionsPanel extends JPanel implements MouseListener{
 			}
 
 			//this is for turning right
-			if (temp.getText().equals(BTN_RIGHT) )
-				if (Main._robotsWorld.turnRobotRight(_selectedRobot))
+			if (temp.getText().equals(BTN_LEFT) )
+				if (Main._robotsWorld.turnRobotLeft(_selectedRobot))
 					Main._worldPanel.getRobutton(_selectedRobot).setText(Main._robotsWorld.getRobot(_selectedRobot).toString());
 
 			//this is for turning right
-			if (temp.getText().equals(BTN_LEFT) )
-				if (Main._robotsWorld.turnRobotLeft(_selectedRobot))
+			if (temp.getText().equals(BTN_RIGHT) )
+				if (Main._robotsWorld.turnRobotRight(_selectedRobot))
 					Main._worldPanel.getRobutton(_selectedRobot).setText(Main._robotsWorld.getRobot(_selectedRobot).toString());
 
 			//this is for deleting robot

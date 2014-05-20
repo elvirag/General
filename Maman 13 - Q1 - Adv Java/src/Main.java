@@ -85,7 +85,7 @@ public class Main {
 						"Wrong input", JOptionPane.WARNING_MESSAGE);
 			}
 		} while (get_Width() == null);
-		_robotsWorld = new RobotsWorld(get_Width() / ROBOT_SIZE, get_Height() / ROBOT_SIZE); // Adding the robot world so it can be updated.
+		_robotsWorld = new RobotsWorld( get_Height() / ROBOT_SIZE, get_Width() / ROBOT_SIZE); // Adding the robot world so it can be updated.
 	}
 
 	//Asking the user if he wants to quit. Happens if user doesn't input one of the parameters & clicks cancel.
@@ -150,8 +150,8 @@ public class Main {
 		frame.setLayout(new FlowLayout(FlowLayout.CENTER,0,0));//the setting of the layout of the panel on it relative to it.
 		Integer frameWidth = get_Width() + FRAME_WIDTH;//setting it's width
 		Integer frameHeight = get_Height() + BUTTON_HEIGHT + TITLE_HEIGHT;//setting it's height
-		frame.setSize( frameWidth  > MIN_WIDTH ? frameWidth : MIN_WIDTH ,//checking out if not less thatn minimal width
-				frameHeight  > MIN_HEIGHT ? frameHeight : MIN_HEIGHT); //got to rememeber the button
+		frame.setSize( frameWidth  > MIN_WIDTH ? frameWidth : MIN_WIDTH ,//checking out if not less than minimal width TODO
+				frameHeight  > MIN_HEIGHT ? frameHeight : MIN_HEIGHT); //got to remember the button
 
 		//All setting of "totalPanel" that includes the WorldPanel & ActionsPanel
 		JPanel totalPanel = new JPanel(); // initializing the "totalPanel"
@@ -164,7 +164,7 @@ public class Main {
 
 		//Final touches
 		frame.setLocationRelativeTo(null);//Locate it in the center
-		frame.setResizable(false);//Can't resize the panel
+		frame.setResizable(true);//Can't resize the panel
 		frame.setVisible(true);//Show the panel
 	}
 }

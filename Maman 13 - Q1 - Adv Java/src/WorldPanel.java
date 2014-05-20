@@ -31,11 +31,11 @@ public class WorldPanel extends JPanel implements MouseListener{
 		super();
 		_roboarray = new RobotArray(); //initializing the robots array (for IDs)
 		//initializing robot array - button matrix
-		_robotsMatrix = new Robutton[Main.get_Width() /  Main.ROBOT_SIZE][Main.get_Height() /  Main.ROBOT_SIZE];
+		_robotsMatrix = new Robutton[Main.get_Height() /  Main.ROBOT_SIZE][Main.get_Width() /  Main.ROBOT_SIZE];
 		//setting size of panel
 		this.setPreferredSize(new Dimension(Main.get_Width(), Main.get_Height()));
 		//setting panel layout
-		this.setLayout(new GridLayout(_robotsMatrix[0].length, _robotsMatrix.length ,0,0));
+		this.setLayout(new GridLayout(_robotsMatrix.length, _robotsMatrix[0].length ,0,0));
 
 		//Adding buttons to matrix
 		for (int i = 0; i < _robotsMatrix.length ; i++){
@@ -56,8 +56,8 @@ public class WorldPanel extends JPanel implements MouseListener{
 	 */
 	public Robutton getRobutton(Point selectedRobot){
 		if (selectedRobot.getX() < 0 || selectedRobot.getY() < 0 || 
-				selectedRobot.getX() >= _robotsMatrix[0].length   ||
-				selectedRobot.getY() >= _robotsMatrix.length )
+				selectedRobot.getX() >= _robotsMatrix.length   ||
+				selectedRobot.getY() >= _robotsMatrix[0].length ) //TODO maybe to change back...
 			return null; //if robot doesn't exist
 		//return the robot in the requested point(location)
 		return _robotsMatrix[(int) selectedRobot.getX()][(int) selectedRobot.getY()]; 
