@@ -17,7 +17,7 @@ public class ActionsPanel extends JPanel implements MouseListener{
 	private static final long serialVersionUID = -969652273342908891L;//some serial
 
 	private Point _selectedRobot;//keeps a selected robot
-	private Color orig;//keeps the oroginal color of the buttons
+	private Color orig;//keeps the original color of the buttons
 
 	//the action buttons
 	protected JButton move;

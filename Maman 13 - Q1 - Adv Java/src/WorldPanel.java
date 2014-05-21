@@ -57,7 +57,7 @@ public class WorldPanel extends JPanel implements MouseListener{
 	public Robutton getRobutton(Point selectedRobot){
 		if (selectedRobot.getX() < 0 || selectedRobot.getY() < 0 || 
 				selectedRobot.getX() >= _robotsMatrix.length   ||
-				selectedRobot.getY() >= _robotsMatrix[0].length ) //TODO maybe to change back...
+				selectedRobot.getY() >= _robotsMatrix[0].length )
 			return null; //if robot doesn't exist
 		//return the robot in the requested point(location)
 		return _robotsMatrix[(int) selectedRobot.getX()][(int) selectedRobot.getY()]; 

@@ -23,7 +23,7 @@ public class Main {
 	//I had to add to the frame size so panel will not be obstructed.
 	//Those are the parameters I used.
 	private static final Integer MIN_WIDTH = 354; // the width of the action buttons
-	private static final Integer FRAME_WIDTH = 20; // the width of the borders of the frame to right and left of it
+	private static final Integer FRAME_WIDTH = 15; // the width of the borders of the frame to right and left of it
 	private static final Integer TITLE_HEIGHT = 20; //the height of the title
 	private static final Integer BUTTON_HEIGHT = 50; //the height of the action buttons
 	private static final Integer MIN_HEIGHT = 120; //the minimum height (one robot button & action buttons)

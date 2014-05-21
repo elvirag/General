@@ -24,7 +24,7 @@ public class RobotsWorld {
 	 * @param width of world (in robots)
 	 * @param height of world (in robots)
 	 */
-	public RobotsWorld(Integer width, Integer height) {
+	public RobotsWorld(Integer height, Integer width) {
 		_robotWorld = new Robot[setHeight(height)][setWidth(width)];
 	}
 
