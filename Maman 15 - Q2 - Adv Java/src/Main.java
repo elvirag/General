@@ -12,8 +12,10 @@ public class Main{
 		
 		SharedData sharedData = new SharedData();
 		
-		(new Thread(new StoreSharedData(sharedData))).start();
-		(new Thread(new CalcSharedData(sharedData))).start();
+		Thread store = new Thread(new StoreSharedData(sharedData));
+		store.start();
+		Thread calc = new Thread(new CalcSharedData(sharedData));
+		calc.start();
 
 	}
 	

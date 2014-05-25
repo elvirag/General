@@ -57,15 +57,17 @@ public class Date<T> implements Comparable<T>{
 
 	@Override
 	public int compareTo(T date) {
-		if (this._year > ((Date) date).getYear() &&
-				this._month >((Date) date).getMonth() &&
-				this._day >((Date) date).getDay())
+		if (this._year > ((Date<?>) date).getYear() &&
+				this._month >((Date<?>) date).getMonth() &&
+				this._day >((Date<?>) date).getDay())
 			return 1;
-		else if (this._year ==((Date) date).getYear() &&
-				this._month ==((Date) date).getMonth() &&
-				this._day ==((Date) date).getDay())
+		else if (this._year ==((Date<?>) date).getYear() &&
+				this._month ==((Date<?>) date).getMonth() &&
+				this._day ==((Date<?>) date).getDay())
 			return 0;
 		else return -1;
 	}
+	
+
 }
 

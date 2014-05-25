@@ -36,6 +36,6 @@ public class StoreSharedData implements Runnable{
 	}
 
 	public String toString(){
-		return "process 1: ( " + _element1 + ", " + _element2 + " ) = " + ( _element1 + _element2 ) / 2;
+		return "Storing: ( " + _element1 + ", " + _element2 + " ) = " + ( _element1 + _element2 ) / 2;
 	}
 }
