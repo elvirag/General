@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Hashtable;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -17,14 +16,15 @@ public class HandleFileMemo{
 	}
 	
 	public void createFile(){
+
+
+		File file = new File("memos.txt");
 		try {
-			if (File.createTempFile("memos", "txt", null) != null){
-				System.out.println("File already exists. Wasn't created...");
-			}
+			file.createNewFile();
 		} catch (IOException e) {
-			System.err.println("Something weird happened");
-			e.printStackTrace();
+			System.out.println("File already exists. Loading from it...");
 		}
+
 	}
 	public void openFile(){
 		try
@@ -38,12 +38,21 @@ public class HandleFileMemo{
 	}
 	
 	public void readMemos(){
-		Hashtable<Date, String> _hashtable = new Hashtable<>();
-		
-		System.out.print("Let's print the file!!!");
+		HashMemo _hashtable = new HashMemo();
+
 		try{
 			while (_input.hasNext()){
-				
+				int date = _input.nextInt();
+				int day = date % 100;
+				int month = (date / 100) % 100;
+				int year =  (date / 10000) % 10000;
+				//System.out.printf("\nThe date will be %d.%d.%d", day, month, year); //TODO remove debug
+				Date realDate = new Date(day, month, year);
+				_input.findInLine(" , "); //Advancing past the ","
+				String memotext = _input.nextLine(); //Getting the String of the memo.
+				//System.out.println("The memo for this day is: \"" + memotext + "\""); //TODO: remove debug
+				_hashtable.put(realDate, memotext);
+				System.out.println(realDate);
 			}
 		}
 		catch(NoSuchElementException nsee){

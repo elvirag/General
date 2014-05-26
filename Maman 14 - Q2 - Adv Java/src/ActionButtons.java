@@ -11,23 +11,15 @@ public class ActionButtons extends JPanel implements MouseListener{
 
 	private static final long serialVersionUID = 2893209635495576609L; //generated some serial
 
-	JComboBox<Integer> _day;
-	private Integer[] _days = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31};
-	JComboBox<Integer> _month;
-	private Integer[] _months = {0,1,2,3,4,5,6,7,8,9,10,11,12};
-	JComboBox<Integer> _year;
-	private Integer[] _years = {0,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020};
 	private JButton _get;
 	private JButton _set;
+	
+	private Date _date;
+	private String _memoText;
+	public static HashMemo _hash;
 
 	public ActionButtons(){
-		_day = new JComboBox<>(_days);
-		this.add(_day);
-		_month = new JComboBox<>(_months);
-		this.add(_month);
-		_year = new JComboBox<>(_years);
-		this.add(_year);
-
+		this.add(new DataInput());
 		_set = new JButton("Save");
 		this.add(_set);
 		_get = new JButton("Display");
@@ -40,11 +32,28 @@ public class ActionButtons extends JPanel implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		if (((JButton) e.getComponent()).getText().equals("Save")){
 			System.out.println("Saving...");
+			if (checkDate()){
+				_memoText = UI._textArea.getText();
+				System.out.println("The text on the textArea: " + _memoText);
+				_hash.put(_date, _memoText);
+			}
+			
 		}
 
 		if (((JButton) e.getComponent()).getText().equals("Display")){
 			System.out.println("Displaying...");
+			if (checkDate()){
+				System.out.println("date:" + _date);
+				_memoText = _hash.get(_date);
+				System.out.printf("\nThe text stored on the textArea in this date(%d.%d.%d): %s",_date.getDay(),_date.getMonth(),_date.getYear(), _memoText);
+				UI._textArea.setText(_memoText);
+			}
 		}
+	}
+
+	private boolean checkDate() {
+		_date = DataInput.getDate();
+		return true;
 	}
 
 	//Not used at all

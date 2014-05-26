@@ -1,4 +1,6 @@
-public class Date<T> implements Comparable<T>{
+
+
+public class Date{
 
 	private int _day;
 	private int _month;
@@ -10,16 +12,22 @@ public class Date<T> implements Comparable<T>{
 	private static final int MIN_YEAR = 1970; // Historic reasons ;)
 
 	public Date(int day, int month, int year) {
-		setDay(day);
-		setMonth(month);
 		setYear(year);
+		setMonth(month);
+		setDay(day);
 	}
 
+	
+	@Override
+	public int hashCode() {
+		return _day + _month * 100 + _year * 10000;
+	}
+	
 	// GETTERS
 	public int getDay() {
 		return _day;
 	}
-
+	
 	public int getMonth() {
 		return _month;
 	}
@@ -30,9 +38,9 @@ public class Date<T> implements Comparable<T>{
 
 	// SETTERS
 	public void setDay(int day) {
-		if (day > 0 && day <= _daysPerMonth[_month])
+		if (day > 0 && day <= _daysPerMonth[getMonth()])
 			_day = day;
-		if (_month == 2 && day == 29
+		else if (_month == 2 && day == 29
 				&& (_year % 400 == 0 || (_year % 4 == 0 && _year % 100 != 0)))
 			_day = day;
 		else {
@@ -56,18 +64,13 @@ public class Date<T> implements Comparable<T>{
 	}
 
 	@Override
-	public int compareTo(T date) {
-		if (this._year > ((Date<?>) date).getYear() &&
-				this._month >((Date<?>) date).getMonth() &&
-				this._day >((Date<?>) date).getDay())
-			return 1;
-		else if (this._year ==((Date<?>) date).getYear() &&
-				this._month ==((Date<?>) date).getMonth() &&
-				this._day ==((Date<?>) date).getDay())
-			return 0;
-		else return -1;
+	public boolean equals(Object obj) {
+		if (getDay() == (((Date) obj).getDay()) &&
+			getMonth() == (((Date) obj).getMonth()) &&
+			getYear() == (((Date) obj).getYear()))
+				return true;
+		return false;
 	}
-	
 
 }
 

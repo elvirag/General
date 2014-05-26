@@ -10,8 +10,9 @@ import javax.swing.JTextArea;
 public class UI extends JFrame implements WindowListener{
 
 	private static final long serialVersionUID = 9056339958174744779L; // some generated serial
-	JTextArea _textArea;
+	public static JTextArea _textArea;
 	ActionButtons _actionButtons;
+	HandleFileMemo _handle;
 
 	private int TEXT_WIDTH = 10;
 	private int TEXT_LENGHT = 20;
@@ -34,7 +35,7 @@ public class UI extends JFrame implements WindowListener{
 	@Override
 	public void windowOpened(WindowEvent e) {
 		System.out.println("Window has opened. Loading DB...");
-		HandleFileMemo handle = new HandleFileMemo();
+		_handle = new HandleFileMemo();
 		
 	}
 	
