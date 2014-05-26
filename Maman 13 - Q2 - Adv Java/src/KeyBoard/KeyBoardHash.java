@@ -12,7 +12,7 @@ import java.util.HashMap;
 class KeyBoardHash {
 
 	//the definition of the hashmap
-	static protected HashMap<Integer, String> _keyhash = new HashMap<Integer, String>();
+	protected HashMap<Integer, String> _keyhash = new HashMap<Integer, String>();
 
 	//the values in it.
 	protected KeyBoardHash() {

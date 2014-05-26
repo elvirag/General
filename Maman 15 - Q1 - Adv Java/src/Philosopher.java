@@ -4,7 +4,9 @@ import java.util.Random;
 public class Philosopher implements Runnable{
 
 	private String _name;
+	@SuppressWarnings("unused") //TODO
 	private String _leftHand;
+	@SuppressWarnings("unused") //TODO
 	private String _rightHand;
 	Random _rand;
 	
@@ -34,6 +36,7 @@ public class Philosopher implements Runnable{
 		this.notify();
 	}
 
+	@SuppressWarnings("unused") //TODO
 	private void think(){
 		System.out.println(_name + " is thinking now.");
 		try {
@@ -44,6 +47,7 @@ public class Philosopher implements Runnable{
 		}
 	}
 	
+	@SuppressWarnings("unused") //TODO
 	private void getChopstics(){
 		if( getLeft() && getRight()){
 		System.out.println(_name + " got both chopsticks!");
