@@ -17,17 +17,17 @@ public class Date{
 		setDay(day);
 	}
 
-	
+
 	@Override
 	public int hashCode() {
 		return _day + _month * 100 + _year * 10000;
 	}
-	
+
 	// GETTERS
 	public int getDay() {
 		return _day;
 	}
-	
+
 	public int getMonth() {
 		return _month;
 	}
@@ -66,10 +66,15 @@ public class Date{
 	@Override
 	public boolean equals(Object obj) {
 		if (getDay() == (((Date) obj).getDay()) &&
-			getMonth() == (((Date) obj).getMonth()) &&
-			getYear() == (((Date) obj).getYear()))
-				return true;
+				getMonth() == (((Date) obj).getMonth()) &&
+				getYear() == (((Date) obj).getYear()))
+			return true;
 		return false;
+	}
+
+	public String toString(){
+		Integer date = _day + _month * 100 + _year * 10000;
+		return date + "";
 	}
 
 }

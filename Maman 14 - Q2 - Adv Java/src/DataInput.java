@@ -1,6 +1,5 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
@@ -48,12 +47,9 @@ public class DataInput extends JPanel implements ActionListener{
 			}
 		}while (day == 0 && month == 0 && year == 0);
 	}
-	
+
 	public static Date getDate(){
 		_internalDate = new Date(day,month,year);
-		System.out.println("final day:" + _internalDate.getDay());
-		System.out.println("final month: " + _internalDate.getMonth());
-		System.out.println("final year: " + _internalDate.getYear());
 		return _internalDate;
 	}
 

@@ -14,7 +14,6 @@ public class ActionButtons extends JPanel implements MouseListener{
 	
 	private Date _date;
 	private String _memoText;
-	public static HashMemo _hash;
 
 	public ActionButtons(){
 		this.add(new DataInput());
@@ -28,30 +27,28 @@ public class ActionButtons extends JPanel implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if (((JButton) e.getComponent()).getText().equals("Save")){
-			System.out.println("Saving...");
-			if (checkDate()){
+		if (((JButton) e.getComponent()).getText().equals("Save"))
+			if (checkDate())
+			{
 				_memoText = UI._textArea.getText();
-				System.out.println("The text on the textArea: " + _memoText);
-				_hash.put(_date, _memoText);
+				HandleFileMemo._hashtable.put(_date, _memoText); //initializing the hash table
 			}
-			
-		}
 
-		if (((JButton) e.getComponent()).getText().equals("Display")){
-			System.out.println("Displaying...");
-			if (checkDate()){
-				System.out.println("date:" + _date);
-				_memoText = _hash.get(_date);
-				System.out.printf("\nThe text stored on the textArea in this date(%d.%d.%d): %s",_date.getDay(),_date.getMonth(),_date.getYear(), _memoText);
+		if (((JButton) e.getComponent()).getText().equals("Display"))
+			if (checkDate())
+			{
+				_memoText = HandleFileMemo._hashtable.get(_date);
 				UI._textArea.setText(_memoText);
 			}
-		}
 	}
 
-	private boolean checkDate() {
-		_date = DataInput.getDate();
-		return true;
+	private boolean checkDate() { //TODO add here validation of legal date, that gets from the DAte class
+		if (DataInput.getDate() != null){
+			_date = DataInput.getDate();
+			return true;
+		}
+		else
+			return false;
 	}
 
 	//Not used at all

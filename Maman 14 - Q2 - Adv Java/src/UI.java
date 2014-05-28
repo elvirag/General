@@ -2,7 +2,7 @@
 import java.awt.BorderLayout;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-
+import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
@@ -34,17 +34,19 @@ public class UI extends JFrame implements WindowListener{
 	
 	@Override
 	public void windowOpened(WindowEvent e) {
-		System.out.println("Window has opened. Loading DB...");
 		_handle = new HandleFileMemo();
-		
 	}
 	
 	
 	@Override
 	public void windowClosing(WindowEvent e) {
 		System.out.println("Window is being closed. Saving...");
-		//TODO
-		//All functions of saving here
+		try {
+			_handle.closeFile();
+		} catch (IOException e1) {
+			System.err.println("There was a problem saving the file.\nIt didn't close properly.");
+			e1.printStackTrace();
+		}
 		System.exit(0);
 	}
 	
