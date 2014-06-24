@@ -5,7 +5,7 @@ public class Main{
 
 	
 	static final int RUN_NUM = 10;
-	static final long TIME_OUT = 400; // 2 secs time out
+	static final long TIME_OUT = 450; // 2 secs time out
 
 	
 	public static void main(String[] args) {
